@@ -37,7 +37,6 @@ export default function VendorProfile() {
   // Edit Profile States
   const [isEditingProfile, setIsEditingProfile] = useState(false);
   const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [updatingProfile, setUpdatingProfile] = useState(false);
 
@@ -65,7 +64,6 @@ export default function VendorProfile() {
       if (response.success) {
         setVendor(response.data.vendor);
         setFullName(response.data.vendor.fullName);
-        setEmail(response.data.vendor.email);
         setPhoneNumber(response.data.vendor.phoneNumber);
       }
     } catch (err: any) {
@@ -84,11 +82,6 @@ export default function VendorProfile() {
       return;
     }
 
-    if (!email.trim()) {
-      setError("Email is required");
-      return;
-    }
-
     if (!phoneNumber.trim()) {
       setError("Phone number is required");
       return;
@@ -99,7 +92,6 @@ export default function VendorProfile() {
     try {
       const response = await updateVendorProfile({ 
         fullName: fullName.trim(),
-        email: email.trim(),
         phoneNumber: phoneNumber.trim()
       });
       if (response.success) {
@@ -354,20 +346,6 @@ export default function VendorProfile() {
                   className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none text-sm disabled:bg-gray-100"
                 />
               </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  disabled={updatingProfile}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none text-sm disabled:bg-gray-100"
-                />
-              </div>
-
 
               <button
                 onClick={handleUpdateProfile}

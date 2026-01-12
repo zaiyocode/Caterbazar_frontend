@@ -75,9 +75,14 @@ export default function UserProfile() {
         setPhoneNumber(response.data.user.phoneNumber || "");
       }
     } catch (err: any) {
-      setError(err.message || "Failed to load profile");
-      if (err.statusCode === 401) {
+      const errorMessage = err.response?.data?.message || err.message || "Failed to load profile";
+      setError(errorMessage);
+      
+      if (err.statusCode === 401 || err.response?.status === 401) {
         router.push("/auth");
+      } else if (err.statusCode === 403 || err.response?.status === 403) {
+        // Account not active - show error but don't redirect
+        console.error("Account access denied:", errorMessage);
       }
     } finally {
       setLoading(false);

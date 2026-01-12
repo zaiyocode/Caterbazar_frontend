@@ -4,11 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { requestPasswordResetOtp } from "@/api/superadmin/auth.api";
-import { AlertCircle, Phone, ArrowLeft, Loader } from "lucide-react";
+import { AlertCircle, Mail, ArrowLeft, Loader } from "lucide-react";
 
 export default function ForgotPasswordPage() {
   const router = useRouter();
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
@@ -18,26 +18,26 @@ export default function ForgotPasswordPage() {
     setError("");
     setLoading(true);
 
-    // Validate phone number
-    if (!phoneNumber.trim()) {
-      setError("Phone number is required");
+    // Validate email
+    if (!email.trim()) {
+      setError("Email is required");
       setLoading(false);
       return;
     }
 
-    if (phoneNumber.length < 10) {
-      setError("Phone number must be at least 10 digits");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError("Please enter a valid email address");
       setLoading(false);
       return;
     }
 
     try {
-      const response = await requestPasswordResetOtp({ phoneNumber });
+      const response = await requestPasswordResetOtp({ email });
 
       if (response.success) {
         setSuccess(true);
-        // Store phone number in session storage for next step
-        sessionStorage.setItem("resetPhoneNumber", phoneNumber);
+        // Store email in session storage for next step
+        sessionStorage.setItem("resetEmail", email);
 
         // Redirect to OTP verification page after 2 seconds
         setTimeout(() => {
@@ -72,7 +72,7 @@ export default function ForgotPasswordPage() {
           </div>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">OTP Sent!</h2>
           <p className="text-gray-600 mb-6">
-            We've sent a 6-digit OTP to your registered phone number. Check your messages and enter it to continue.
+            We've sent a 6-digit OTP to your registered email address. Check your inbox and enter it to continue.
           </p>
           <p className="text-sm text-gray-500">Redirecting to verification page...</p>
         </div>
@@ -89,7 +89,7 @@ export default function ForgotPasswordPage() {
             Forgot Password?
           </h1>
           <p className="text-gray-600">
-            Enter your phone number to receive an OTP for password reset.
+            Enter your email address to receive an OTP for password reset.
           </p>
         </div>
 
@@ -106,35 +106,35 @@ export default function ForgotPasswordPage() {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Phone Number Input */}
+          {/* Email Input */}
           <div>
-            <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700 mb-2">
-              Phone Number
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              Email Address
             </label>
             <div className="relative">
-              <Phone className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" />
+              <Mail className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" />
               <input
-                id="phoneNumber"
-                type="tel"
-                value={phoneNumber}
+                id="email"
+                type="email"
+                value={email}
                 onChange={(e) => {
-                  setPhoneNumber(e.target.value.replace(/\D/g, "").slice(0, 15));
+                  setEmail(e.target.value);
                   setError("");
                 }}
-                placeholder="Enter your 10-digit phone number"
+                placeholder="Enter your email address"
                 className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition"
                 disabled={loading}
               />
             </div>
             <p className="text-xs text-gray-500 mt-1">
-              Make sure this is the phone number registered with your account.
+              Make sure this is the email address registered with your account.
             </p>
           </div>
 
           {/* Submit Button */}
           <button
             type="submit"
-            disabled={loading || !phoneNumber.trim()}
+            disabled={loading || !email.trim()}
             className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-gray-400 text-white font-semibold py-2.5 rounded-lg transition duration-200 flex items-center justify-center gap-2"
           >
             {loading ? (

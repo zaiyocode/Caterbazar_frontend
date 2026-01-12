@@ -2,11 +2,11 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Loader2, AlertCircle, CheckCircle, Phone, Home } from "lucide-react";
+import { ArrowLeft, Loader2, AlertCircle, CheckCircle, Mail, Home } from "lucide-react";
 import { vendorForgotPassword } from "@/api/vendor/auth.api";
 
 export default function VendorForgotPassword() {
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
@@ -16,20 +16,20 @@ export default function VendorForgotPassword() {
     e.preventDefault();
     setError("");
 
-    if (!phoneNumber) {
-      setError("Please enter your phone number");
+    if (!email) {
+      setError("Please enter your email address");
       return;
     }
 
-    if (!/^[0-9]{10}$/.test(phoneNumber)) {
-      setError("Please enter a valid 10-digit phone number");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError("Please enter a valid email address");
       return;
     }
 
     setLoading(true);
 
     try {
-      await vendorForgotPassword(phoneNumber);
+      await vendorForgotPassword(email);
       setSuccess(true);
     } catch (err: any) {
       setError(err.message || "Failed to send OTP. Please try again.");
@@ -39,7 +39,7 @@ export default function VendorForgotPassword() {
   };
 
   const handleContinue = () => {
-    router.push(`/auth/vendor/reset-password?phoneNumber=${phoneNumber}`);
+    router.push(`/auth/vendor/reset-password?email=${encodeURIComponent(email)}`);
   };
 
   return (
@@ -105,7 +105,7 @@ export default function VendorForgotPassword() {
                   Forgot Password?
                 </h2>
                 <p className="text-gray-600 text-sm">
-                  Enter your phone number and we'll send you an OTP to reset your password
+                  Enter your email address and we'll send you an OTP to reset your password
                 </p>
               </div>
 
@@ -121,21 +121,21 @@ export default function VendorForgotPassword() {
 
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    Phone Number
+                    Email Address
                   </label>
                   <div className="relative">
-                    <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                     <input
-                      type="tel"
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/g, '').slice(0, 10))}
-                      placeholder="Enter your 10-digit phone number"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your email address"
                       disabled={loading}
                       className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition text-sm disabled:bg-gray-100 disabled:cursor-not-allowed"
                     />
                   </div>
                   <p className="text-xs text-gray-500 mt-1">
-                    We'll send an OTP to this number
+                    We'll send an OTP to this email
                   </p>
                 </div>
 
@@ -166,7 +166,7 @@ export default function VendorForgotPassword() {
                   OTP Sent Successfully!
                 </h2>
                 <p className="text-gray-600 text-sm mb-6">
-                  We've sent a 6-digit OTP to your phone number ending in ****{phoneNumber.slice(-4)}
+                  We've sent a 6-digit OTP to {email}
                 </p>
                 <button
                   onClick={handleContinue}

@@ -158,7 +158,7 @@ export const vendorLogin = async (loginData: {
 
 // Verify OTP
 export const vendorVerifyOTP = async (otpData: {
-  phoneNumber: string;
+  email: string;
   otp: string;
 }): Promise<VerifyOTPResponse> => {
   try {
@@ -188,10 +188,10 @@ export const vendorVerifyOTP = async (otpData: {
 };
 
 // Resend OTP
-export const vendorResendOTP = async (phoneNumber: string): Promise<ResendOTPResponse> => {
+export const vendorResendOTP = async (email: string): Promise<ResendOTPResponse> => {
   try {
     const response = await vendorAuthAPI.post<ResendOTPResponse>("/auth/resend-otp", {
-      phoneNumber,
+      email,
     });
     return response.data;
   } catch (error: any) {
@@ -246,10 +246,10 @@ export const vendorLogout = async (): Promise<void> => {
 };
 
 // Forgot Password - Request OTP
-export const vendorForgotPassword = async (phoneNumber: string): Promise<ForgotPasswordResponse> => {
+export const vendorForgotPassword = async (email: string): Promise<ForgotPasswordResponse> => {
   try {
     const response = await vendorAuthAPI.post<ForgotPasswordResponse>("/auth/forgot-password", {
-      phoneNumber,
+      email,
     });
     return response.data;
   } catch (error: any) {
@@ -262,7 +262,7 @@ export const vendorForgotPassword = async (phoneNumber: string): Promise<ForgotP
 
 // Verify Reset OTP
 export const vendorVerifyResetOTP = async (otpData: {
-  phoneNumber: string;
+  email: string;
   otp: string;
 }): Promise<VerifyResetOTPResponse> => {
   try {

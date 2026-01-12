@@ -8,20 +8,20 @@ import { AlertCircle, ArrowLeft, Loader } from "lucide-react";
 export default function AdminVerifyOtpPage() {
   const router = useRouter();
   const [otp, setOtp] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [timeLeft, setTimeLeft] = useState(300); // 5 minutes
   const [canResend, setCanResend] = useState(false);
 
   useEffect(() => {
-    // Get phone number from session storage
-    const storedPhone = sessionStorage.getItem("resetPhoneNumber");
-    if (!storedPhone) {
+    // Get email from session storage
+    const storedEmail = sessionStorage.getItem("resetEmail");
+    if (!storedEmail) {
       router.push("/auth/admin/forgot-password");
       return;
     }
-    setPhoneNumber(storedPhone);
+    setEmail(storedEmail);
   }, [router]);
 
   // Timer for OTP expiry
@@ -58,7 +58,7 @@ export default function AdminVerifyOtpPage() {
 
     try {
       const response = await verifyResetOtp({
-        phoneNumber,
+        email,
         otp,
       });
 
@@ -85,7 +85,7 @@ export default function AdminVerifyOtpPage() {
     try {
       // Import and call the request OTP function
       const { requestPasswordResetOtp } = await import("@/api/superadmin/auth.api");
-      const response = await requestPasswordResetOtp({ phoneNumber });
+      const response = await requestPasswordResetOtp({ email });
 
       if (response.success) {
         setTimeLeft(300);
@@ -111,7 +111,7 @@ export default function AdminVerifyOtpPage() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Verify OTP</h1>
           <p className="text-gray-600">
-            Enter the 6-digit OTP sent to {phoneNumber}
+            Enter the 6-digit OTP sent to {email}
           </p>
         </div>
 
@@ -190,7 +190,7 @@ export default function AdminVerifyOtpPage() {
             className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium text-sm w-full justify-center"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Phone Number
+            Back to Email
           </button>
         </div>
       </div>

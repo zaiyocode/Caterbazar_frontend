@@ -13,7 +13,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-
 export const metadata: Metadata = {
   title: "Cater Bazar – Find Top Caterers in India | Compare Menus & Book Online",
   description: "Find verified caterers across India with Cater Bazar. Compare menus, pricing, cuisines, and services for weddings, corporate events, parties, and more. Book best caterers with best prices & reviews.",

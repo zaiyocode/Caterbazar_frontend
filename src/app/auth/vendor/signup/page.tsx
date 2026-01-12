@@ -89,7 +89,7 @@ export default function VendorSignup() {
       });
 
       if (response.success) {
-        setSuccess('Account created! Please verify your mobile number.');
+        setSuccess('Account created! Please verify your email address.');
         setTimer(300); // Reset timer to 5 minutes
         setStep(2);
       }
@@ -113,12 +113,12 @@ export default function VendorSignup() {
 
     try {
       const response = await vendorVerifyOTP({
-        phoneNumber: mobileNumber,
+        email: email,
         otp: otpCode
       });
 
       if (response.success) {
-        setSuccess('Phone verified successfully! Redirecting to business registration...');
+        setSuccess('Email verified successfully! Redirecting to business registration...');
         setTimeout(() => {
           router.push('/auth/vendor/businessRegistration');
         }, 1500);
@@ -137,7 +137,7 @@ export default function VendorSignup() {
     setLoading(true);
 
     try {
-      const response = await vendorResendOTP(mobileNumber);
+      const response = await vendorResendOTP(email);
 
       if (response.success) {
         setSuccess('New OTP sent successfully!');
@@ -373,9 +373,9 @@ export default function VendorSignup() {
               </button>
 
               <div className="mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-2">Verify Your Number</h2>
-                <p className="text-gray-600 text-sm mb-2">Enter the 6-digit code sent to your mobile</p>
-                <p className="text-sm text-gray-500">Code sent to +91-{mobileNumber.slice(-4).padStart(10, 'X')}</p>
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">Verify Your Email</h2>
+                <p className="text-gray-600 text-sm mb-2">Enter the 6-digit code sent to your email</p>
+                <p className="text-sm text-gray-500">Code sent to {email}</p>
               </div>
 
               {/* Error/Success Messages */}
@@ -432,7 +432,7 @@ export default function VendorSignup() {
                   disabled={loading}
                   className="text-sm text-orange-500 hover:text-orange-600 font-medium w-full disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  Edit Mobile Number
+                  Edit Email
                 </button>
 
                 <button

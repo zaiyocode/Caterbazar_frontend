@@ -158,7 +158,7 @@ export const userLogin = async (loginData: {
 
 // Verify OTP
 export const verifyOTP = async (otpData: {
-  phoneNumber: string;
+  email: string;
   otp: string;
 }): Promise<VerifyOTPResponse> => {
   try {
@@ -188,10 +188,10 @@ export const verifyOTP = async (otpData: {
 };
 
 // Resend OTP
-export const resendOTP = async (phoneNumber: string): Promise<ResendOTPResponse> => {
+export const resendOTP = async (email: string): Promise<ResendOTPResponse> => {
   try {
     const response = await userAuthAPI.post<ResendOTPResponse>("/auth/resend-otp", {
-      phoneNumber,
+      email,
     });
     return response.data;
   } catch (error: any) {
@@ -265,10 +265,10 @@ export const getGoogleAuthURL = async (): Promise<{ url: string }> => {
 };
 
 // Forgot Password - Request OTP
-export const forgotPassword = async (phoneNumber: string): Promise<ForgotPasswordResponse> => {
+export const forgotPassword = async (email: string): Promise<ForgotPasswordResponse> => {
   try {
     const response = await userAuthAPI.post<ForgotPasswordResponse>("/auth/forgot-password", {
-      phoneNumber,
+      email,
     });
     return response.data;
   } catch (error: any) {
@@ -281,7 +281,7 @@ export const forgotPassword = async (phoneNumber: string): Promise<ForgotPasswor
 
 // Verify Reset OTP
 export const verifyResetOTP = async (otpData: {
-  phoneNumber: string;
+  email: string;
   otp: string;
 }): Promise<VerifyResetOTPResponse> => {
   try {

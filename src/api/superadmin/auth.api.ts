@@ -9,11 +9,11 @@ export interface LoginCredentials {
 }
 
 export interface ForgotPasswordRequest {
-  phoneNumber: string;
+  email: string;
 }
 
 export interface VerifyResetOtpRequest {
-  phoneNumber: string;
+  email: string;
   otp: string;
 }
 

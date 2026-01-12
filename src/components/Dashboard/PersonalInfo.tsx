@@ -139,14 +139,36 @@ export default function PersonalInfo() {
     setSaving(true);
 
     try {
-      await updatePersonalInfo({
-        facebookHandle: formData.facebookPage || undefined,
-        instagramHandle: formData.instagramHandle || undefined,
-        whatsappNumber: formData.whatsappNumber || undefined,
-        personalWebsite: formData.websiteUrl || undefined,
-        bio: formData.shortBio || undefined,
-        profilePhoto: profilePhotoFile || undefined,
-      });
+      // Build update object with only non-empty values
+      const updateData: any = {};
+      
+      if (formData.facebookPage?.trim()) {
+        updateData.facebookHandle = formData.facebookPage.trim();
+      }
+      if (formData.instagramHandle?.trim()) {
+        updateData.instagramHandle = formData.instagramHandle.trim();
+      }
+      if (formData.whatsappNumber?.trim()) {
+        updateData.whatsappNumber = formData.whatsappNumber.trim();
+      }
+      if (formData.websiteUrl?.trim()) {
+        updateData.personalWebsite = formData.websiteUrl.trim();
+      }
+      if (formData.shortBio?.trim()) {
+        updateData.bio = formData.shortBio.trim();
+      }
+      if (profilePhotoFile) {
+        updateData.profilePhoto = profilePhotoFile;
+      }
+
+      // Only send request if there's at least one field to update
+      if (Object.keys(updateData).length === 0) {
+        setError('Please make at least one change to update your profile');
+        setSaving(false);
+        return;
+      }
+
+      await updatePersonalInfo(updateData);
 
       setSuccess('Profile updated successfully!');
       setProfilePhotoFile(null); // Clear file after successful upload

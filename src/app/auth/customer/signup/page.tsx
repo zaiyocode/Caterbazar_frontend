@@ -102,7 +102,7 @@ export default function CaterBazarSignup() {
 
     try {
       const response = await verifyOTP({
-        phoneNumber: mobileNumber,
+        email: email,
         otp: otpCode,
       });
 
@@ -122,7 +122,7 @@ export default function CaterBazarSignup() {
     setLoading(true);
 
     try {
-      const response = await resendOTP(mobileNumber);
+      const response = await resendOTP(email);
 
       if (response.success) {
         setTimer(300); // Reset timer
@@ -391,13 +391,13 @@ export default function CaterBazarSignup() {
 
               <div className="mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-2">
-                  Verify Your Number
+                  Verify Your Email
                 </h2>
                 <p className="text-gray-600 text-sm mb-2">
-                  Enter the 6-digit code sent to your mobile
+                  Enter the 6-digit code sent to your email
                 </p>
                 <p className="text-sm text-gray-500">
-                  Code sent to +91-{mobileNumber}
+                  Code sent to {email}
                 </p>
               </div>
 
@@ -451,7 +451,7 @@ export default function CaterBazarSignup() {
                   disabled={loading}
                   className="text-sm text-orange-500 hover:text-orange-600 font-medium w-full disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Edit Mobile Number
+                  Edit Email
                 </button>
 
                 <button

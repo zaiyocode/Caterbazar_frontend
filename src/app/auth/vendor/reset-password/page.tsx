@@ -16,7 +16,7 @@ function VendorResetPasswordContent() {
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
   const router = useRouter();
   const searchParams = useSearchParams();
-  const phoneNumber = searchParams.get("phoneNumber") || "";
+  const email = searchParams.get("email") || "";
 
   // Countdown timer
   useEffect(() => {
@@ -77,7 +77,7 @@ function VendorResetPasswordContent() {
     setLoading(true);
 
     try {
-      const response = await vendorVerifyResetOTP({ phoneNumber, otp: otpString });
+      const response = await vendorVerifyResetOTP({ email, otp: otpString });
       setResetToken(response.data.resetToken);
       setSuccess(true);
     } catch (err: any) {
@@ -92,7 +92,7 @@ function VendorResetPasswordContent() {
     setError("");
     
     try {
-      await vendorForgotPassword(phoneNumber);
+      await vendorForgotPassword(email);
       setTimer(120);
       setOtp(["", "", "", "", "", ""]);
       inputRefs.current[0]?.focus();
@@ -176,7 +176,7 @@ function VendorResetPasswordContent() {
                   Verify OTP
                 </h2>
                 <p className="text-gray-600 text-sm">
-                  Enter the 6-digit code sent to ****{phoneNumber.slice(-4)}
+                  Enter the 6-digit code sent to {email}
                 </p>
               </div>
 

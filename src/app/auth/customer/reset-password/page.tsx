@@ -15,15 +15,15 @@ function UserResetPasswordContent() {
   
   const router = useRouter();
   const searchParams = useSearchParams();
-  const phoneNumber = searchParams.get("phoneNumber") || "";
+  const email = searchParams.get("email") || "";
   
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   useEffect(() => {
-    if (!phoneNumber) {
+    if (!email) {
       router.push("/auth/customer/forgot-password");
     }
-  }, [phoneNumber, router]);
+  }, [email, router]);
 
   const handleOtpChange = (index: number, value: string) => {
     if (value.length > 1) return;
@@ -58,7 +58,7 @@ function UserResetPasswordContent() {
 
     try {
       const response = await verifyResetOTP({
-        phoneNumber,
+        email,
         otp: otpString,
       });
 
@@ -78,7 +78,7 @@ function UserResetPasswordContent() {
     setError("");
 
     try {
-      await forgotPassword(phoneNumber);
+      await forgotPassword(email);
       setOtp(["", "", "", "", "", ""]);
       inputRefs.current[0]?.focus();
     } catch (err: any) {
@@ -92,7 +92,7 @@ function UserResetPasswordContent() {
     router.push(`/auth/customer/new-password?resetToken=${resetToken}`);
   };
 
-  if (!phoneNumber) {
+  if (!email) {
     return null;
   }
 
@@ -159,7 +159,7 @@ function UserResetPasswordContent() {
                   Verify OTP
                 </h2>
                 <p className="text-gray-600 text-sm">
-                  Enter the 6-digit code sent to ****{phoneNumber.slice(-4)}
+                  Enter the 6-digit code sent to {email}
                 </p>
               </div>
 
