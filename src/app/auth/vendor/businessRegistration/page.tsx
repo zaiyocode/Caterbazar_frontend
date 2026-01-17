@@ -4,6 +4,16 @@ import { ChevronDown, AlertCircle, CheckCircle, Loader2, Home } from "lucide-rea
 import { submitBusinessRegistration } from "@/api/vendor/business.api";
 import { useRouter } from "next/navigation";
 
+const VENDOR_TYPES = {
+  FULL_CATERING: 'full_catering',
+  SNACKS_AND_STARTER: 'snacks_and_starter',
+  DESSERT_AND_SWEET: 'dessert_and_sweet',
+  BEVERAGE: 'beverage',
+  PAAN: 'paan',
+  WATER: 'water',
+  OTHER: 'other',
+};
+
 export default function BusinessRegistration() {
   const router = useRouter();
   const [brandName, setBrandName] = useState("");
@@ -205,7 +215,7 @@ export default function BusinessRegistration() {
 
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                4. Location
+                4. Address
               </label>
               <input
                 type="text"
@@ -229,16 +239,13 @@ export default function BusinessRegistration() {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition text-sm bg-white appearance-none text-gray-600 disabled:bg-gray-100 disabled:cursor-not-allowed"
                 >
                   <option value="">Select Type</option>
-                  <option value="food_catering">Food Catering</option>
-                  <option value="decoration">Decoration</option>
-                  <option value="photography">Photography</option>
-                  <option value="dj_music">DJ & Music</option>
-                  <option value="venue">Venue</option>
-                  <option value="makeup_artist">Makeup Artist</option>
-                  <option value="event_planner">Event Planner</option>
-                  <option value="invitation_cards">Invitation Cards</option>
-                  <option value="transportation">Transportation</option>
-                  <option value="other">Other</option>
+                  <option value={VENDOR_TYPES.FULL_CATERING}>Full Catering</option>
+                  <option value={VENDOR_TYPES.SNACKS_AND_STARTER}>Snacks & Starter</option>
+                  <option value={VENDOR_TYPES.DESSERT_AND_SWEET}>Dessert & Sweets</option>
+                  <option value={VENDOR_TYPES.BEVERAGE}>Beverage</option>
+                  <option value={VENDOR_TYPES.PAAN}>Paan</option>
+                  <option value={VENDOR_TYPES.WATER}>Water</option>
+                  <option value={VENDOR_TYPES.OTHER}>Other</option>
                 </select>
                 <ChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
               </div>
