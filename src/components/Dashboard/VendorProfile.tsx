@@ -255,7 +255,7 @@ export default function VendorProfile() {
           <p className="text-gray-600">Failed to load profile</p>
           <button
             onClick={fetchVendorProfile}
-            className="mt-4 text-orange-500 hover:text-orange-600"
+            className="mt-4 text-orange-500 hover:text-orange-600 cursor-pointer"
           >
             Retry
           </button>
@@ -314,7 +314,7 @@ export default function VendorProfile() {
 
           <button
             onClick={() => setIsEditingProfile(!isEditingProfile)}
-            className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors flex items-center gap-2 text-sm sm:text-base"
+            className="cursor-pointer px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors flex items-center gap-2 text-sm sm:text-base"
           >
             {isEditingProfile ? (
               <>
@@ -350,7 +350,7 @@ export default function VendorProfile() {
               <button
                 onClick={handleUpdateProfile}
                 disabled={updatingProfile}
-                className="w-full sm:w-auto px-6 py-2.5 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors disabled:bg-orange-300 flex items-center justify-center gap-2 text-sm"
+                className="cursor-pointer w-full sm:w-auto px-6 py-2.5 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors disabled:bg-orange-300 flex items-center justify-center gap-2 text-sm"
               >
                 {updatingProfile ? (
                   <>
@@ -457,7 +457,7 @@ export default function VendorProfile() {
           {!isChangingPassword && (
             <button
               onClick={() => setIsChangingPassword(true)}
-              className="px-4 py-2 text-orange-500 hover:bg-orange-50 rounded-lg transition-colors text-sm"
+              className="cursor-pointer px-4 py-2 text-orange-500 hover:bg-orange-50 rounded-lg transition-colors text-sm"
             >
               Change
             </button>
@@ -481,7 +481,7 @@ export default function VendorProfile() {
                 <button
                   type="button"
                   onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                 >
                   {showCurrentPassword ? (
                     <EyeOff className="w-5 h-5" />
@@ -507,7 +507,7 @@ export default function VendorProfile() {
                 <button
                   type="button"
                   onClick={() => setShowNewPassword(!showNewPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                 >
                   {showNewPassword ? (
                     <EyeOff className="w-5 h-5" />
@@ -533,7 +533,7 @@ export default function VendorProfile() {
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                 >
                   {showConfirmPassword ? (
                     <EyeOff className="w-5 h-5" />
@@ -548,7 +548,7 @@ export default function VendorProfile() {
               <button
                 onClick={handleChangePassword}
                 disabled={changingPassword}
-                className="flex-1 px-6 py-2.5 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors disabled:bg-orange-300 flex items-center justify-center gap-2 text-sm"
+                className="cursor-pointer flex-1 px-6 py-2.5 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors disabled:bg-orange-300 flex items-center justify-center gap-2 text-sm"
               >
                 {changingPassword ? (
                   <>
@@ -571,7 +571,7 @@ export default function VendorProfile() {
                   setError("");
                 }}
                 disabled={changingPassword}
-                className="px-6 py-2.5 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors disabled:bg-gray-100 text-sm"
+                className="cursor-pointer px-6 py-2.5 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors disabled:bg-gray-100 text-sm"
               >
                 Cancel
               </button>

@@ -32,7 +32,7 @@ export default function SuperAdminMobileMenu({ activeTab, onTabChange }: SuperAd
       <div className="lg:hidden fixed bottom-4 right-4 z-50">
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-orange-500 text-white p-3 rounded-full shadow-lg hover:bg-orange-600 transition-colors"
+          className="cursor-pointer bg-orange-500 text-white p-3 rounded-full shadow-lg hover:bg-orange-600 transition-colors"
         >
           <Menu className="w-6 h-6" />
         </button>
@@ -55,7 +55,7 @@ export default function SuperAdminMobileMenu({ activeTab, onTabChange }: SuperAd
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 text-gray-500 hover:text-gray-700 transition-colors"
+                className="cursor-pointer p-2 text-gray-500 hover:text-gray-700 transition-colors"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -69,7 +69,7 @@ export default function SuperAdminMobileMenu({ activeTab, onTabChange }: SuperAd
                   <button
                     key={item.id}
                     onClick={() => handleTabChange(item.id)}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors ${
+                    className={`cursor-pointer w-full flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors ${
                       activeTab === item.id
                         ? 'bg-orange-500 text-white'
                         : 'text-gray-700 hover:bg-gray-100'

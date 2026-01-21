@@ -157,7 +157,7 @@ export default function TotalOrdersManagement({ isAdminPanel = false }: TotalOrd
             <p className="text-red-600">{error}</p>
             <button
               onClick={fetchOrders}
-              className="mt-4 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
+              className="cursor-pointer mt-4 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
             >
               Retry
             </button>
@@ -187,7 +187,7 @@ export default function TotalOrdersManagement({ isAdminPanel = false }: TotalOrd
               </div>
               <button
                 onClick={() => setDetailsModalOpen(false)}
-                className="text-white hover:bg-white/20 p-2 rounded-lg transition-colors"
+                className="cursor-pointer text-white hover:bg-white/20 p-2 rounded-lg transition-colors"
               >
                 <X className="w-6 h-6" />
               </button>

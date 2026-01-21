@@ -402,7 +402,7 @@ export default function BusinessRegistrationManagement() {
                         <div className="flex items-center gap-2">
                           <button
                             onClick={() => handleViewDetails(registration)}
-                            className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                            className="cursor-pointer p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                             title="View Details"
                           >
                             <Eye className="w-4 h-4" />
@@ -410,7 +410,7 @@ export default function BusinessRegistrationManagement() {
                           {currentUser?.phoneNumber !== '9178114124' && (
                             <button
                               onClick={() => handleEdit(registration)}
-                              className="p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+                              className="cursor-pointer p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
                               title="Edit Details"
                             >
                               <FileText className="w-4 h-4" />
@@ -419,7 +419,7 @@ export default function BusinessRegistrationManagement() {
                           {registration.status === 'pending' && (
                             <button
                               onClick={() => handleReview(registration)}
-                              className="px-3 py-1.5 bg-orange-500 text-white text-xs font-medium rounded-lg hover:bg-orange-600 transition-colors"
+                              className="cursor-pointer px-3 py-1.5 bg-orange-500 text-white text-xs font-medium rounded-lg hover:bg-orange-600 transition-colors"
                             >
                               Review
                             </button>
@@ -442,14 +442,14 @@ export default function BusinessRegistrationManagement() {
                   <button
                     onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                     disabled={currentPage === 1}
-                    className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="cursor-pointer px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Previous
                   </button>
                   <button
                     onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                     disabled={currentPage === totalPages}
-                    className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="cursor-pointer px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Next
                   </button>
@@ -468,7 +468,7 @@ export default function BusinessRegistrationManagement() {
               <h3 className="text-xl font-bold text-gray-900">Registration Details</h3>
               <button
                 onClick={() => setShowDetailModal(false)}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                className="cursor-pointer p-2 hover:bg-gray-100 rounded-lg transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -592,14 +592,14 @@ export default function BusinessRegistrationManagement() {
                     setShowDetailModal(false);
                     handleReview(selectedRegistration);
                   }}
-                  className="px-6 py-2.5 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors"
+                  className="cursor-pointer px-6 py-2.5 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors"
                 >
                   Review Registration
                 </button>
               )}
               <button
                 onClick={() => setShowDetailModal(false)}
-                className="px-6 py-2.5 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
+                className="cursor-pointer px-6 py-2.5 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
               >
                 Close
               </button>
@@ -616,7 +616,7 @@ export default function BusinessRegistrationManagement() {
               <h3 className="text-xl font-bold text-gray-900">Edit Business Registration</h3>
               <button
                 onClick={() => setShowEditModal(false)}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                className="cursor-pointer p-2 hover:bg-gray-100 rounded-lg transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -725,14 +725,14 @@ export default function BusinessRegistrationManagement() {
               <button
                 onClick={() => setShowEditModal(false)}
                 disabled={updating}
-                className="px-6 py-2.5 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50"
+                className="cursor-pointer px-6 py-2.5 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50"
               >
                 Cancel
               </button>
               <button
                 onClick={handleUpdateSubmit}
                 disabled={updating}
-                className="px-6 py-2.5 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors disabled:bg-orange-300 flex items-center gap-2"
+                className="cursor-pointer px-6 py-2.5 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors disabled:bg-orange-300 flex items-center gap-2"
               >
                 {updating ? (
                   <>
@@ -756,7 +756,7 @@ export default function BusinessRegistrationManagement() {
               <h3 className="text-xl font-bold text-gray-900">Review Registration</h3>
               <button
                 onClick={() => setShowReviewModal(false)}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                className="cursor-pointer p-2 hover:bg-gray-100 rounded-lg transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -856,14 +856,14 @@ export default function BusinessRegistrationManagement() {
               <button
                 onClick={() => setShowReviewModal(false)}
                 disabled={reviewing}
-                className="px-6 py-2.5 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50"
+                className="cursor-pointer px-6 py-2.5 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSubmitReview}
                 disabled={reviewing}
-                className="px-6 py-2.5 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors disabled:bg-orange-300 flex items-center gap-2"
+                className="cursor-pointer px-6 py-2.5 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors disabled:bg-orange-300 flex items-center gap-2"
               >
                 {reviewing ? (
                   <>

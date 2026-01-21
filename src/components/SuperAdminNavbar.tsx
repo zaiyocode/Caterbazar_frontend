@@ -92,7 +92,7 @@ export default function SuperAdminNavbar() {
             {/* Logo */}
             <Link
               href="/superadmin/dashboard"
-              className="flex items-center space-x-3"
+              className="cursor-pointer flex items-center space-x-3"
             >
               <div className="flex items-center">
                 <img
@@ -118,7 +118,7 @@ export default function SuperAdminNavbar() {
             <div className="relative">
               <button
                 onClick={() => setIsProfileOpen(!isProfileOpen)}
-                className="flex items-center space-x-2 p-1 rounded-lg hover:bg-white/10 transition-all duration-200"
+                className="cursor-pointer flex items-center space-x-2 p-1 rounded-lg hover:bg-white/10 transition-all duration-200"
               >
                 {user?.profilePicture ? (
                   <img
@@ -233,7 +233,7 @@ export default function SuperAdminNavbar() {
                     <button
                       onClick={handleLogout}
                       disabled={isLoggingOut}
-                      className="flex items-center w-full px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                      className="cursor-pointer flex items-center w-full px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium"
                     >
                       <LogOut className="w-4 h-4 mr-3" />
                       {isLoggingOut ? "Logging out..." : "Logout"}
@@ -246,7 +246,7 @@ export default function SuperAdminNavbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
+              className="cursor-pointer md:hidden p-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
             >
               {isMenuOpen ? (
                 <X className="w-5 h-5" />
@@ -264,7 +264,7 @@ export default function SuperAdminNavbar() {
               {/* Mobile Links */}
               <Link
                 href="/"
-                className="flex items-center space-x-3 px-3 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all"
+                className="cursor-pointer flex items-center space-x-3 px-3 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <Home className="w-5 h-5" />
@@ -273,7 +273,7 @@ export default function SuperAdminNavbar() {
 
               <Link
                 href="/superadmin/dashboard"
-                className="flex items-center space-x-3 px-3 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all"
+                className="cursor-pointer flex items-center space-x-3 px-3 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <BarChart3 className="w-5 h-5" />
@@ -282,7 +282,7 @@ export default function SuperAdminNavbar() {
 
               <Link
                 href="/superadmin/settings"
-                className="flex items-center space-x-3 px-3 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all"
+                className="cursor-pointer flex items-center space-x-3 px-3 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <Settings className="w-5 h-5" />
@@ -317,7 +317,7 @@ export default function SuperAdminNavbar() {
                   <button
                     onClick={handleLogout}
                     disabled={isLoggingOut}
-                    className="flex items-center space-x-3 px-3 py-2 text-red-300 hover:text-red-200 hover:bg-white/10 rounded-lg transition-all w-full mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="cursor-pointer flex items-center space-x-3 px-3 py-2 text-red-300 hover:text-red-200 hover:bg-white/10 rounded-lg transition-all w-full mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <LogOut className="w-5 h-5" />
                     <span className="font-medium">

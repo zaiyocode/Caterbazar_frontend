@@ -172,7 +172,7 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({
     <div className="border border-gray-200 rounded-lg mb-4 overflow-hidden hover:shadow-md transition-shadow">
       <button
         onClick={() => onToggle(item.id)}
-        className="w-full px-6 py-4 flex items-center justify-between bg-white hover:bg-gray-50 transition-colors text-left"
+        className="cursor-pointer w-full px-6 py-4 flex items-center justify-between bg-white hover:bg-gray-50 transition-colors text-left"
       >
         <h3 className="font-semibold text-gray-900">{item.question}</h3>
         <ChevronDown

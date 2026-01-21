@@ -174,7 +174,7 @@ export default function VendorSignup() {
           {/* Home Button */}
           <button
             onClick={() => router.push("/")}
-            className="mb-6 flex items-center gap-2 text-gray-600 hover:text-orange-600 transition-colors"
+            className="cursor-pointer mb-6 flex items-center gap-2 text-gray-600 hover:text-orange-600 transition-colors"
             aria-label="Go to home"
           >
             <Home className="w-4 h-4" />
@@ -289,7 +289,7 @@ export default function VendorSignup() {
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
                       disabled={loading}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 disabled:cursor-not-allowed"
+                      className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 disabled:cursor-not-allowed"
                     >
                       {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                     </button>
@@ -314,7 +314,7 @@ export default function VendorSignup() {
                       type="button"
                       onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                       disabled={loading}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 disabled:cursor-not-allowed"
+                      className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 disabled:cursor-not-allowed"
                     >
                       {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                     </button>
@@ -340,7 +340,7 @@ export default function VendorSignup() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-orange-400 hover:bg-orange-500 text-white py-3.5 rounded-lg font-semibold transition-colors text-sm disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="cursor-pointer w-full bg-orange-400 hover:bg-orange-500 text-white py-3.5 rounded-lg font-semibold transition-colors text-sm disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {loading ? (
                     <>
@@ -366,7 +366,7 @@ export default function VendorSignup() {
               <button
                 onClick={() => setStep(1)}
                 disabled={loading}
-                className="flex items-center gap-2 text-gray-600 hover:text-gray-800 mb-8 disabled:cursor-not-allowed disabled:opacity-50"
+                className="cursor-pointer flex items-center gap-2 text-gray-600 hover:text-gray-800 mb-8 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span className="text-sm">Back</span>
@@ -419,7 +419,7 @@ export default function VendorSignup() {
                       <button
                         onClick={handleResendOtp}
                         disabled={loading}
-                        className="text-orange-500 hover:text-orange-600 font-semibold disabled:cursor-not-allowed disabled:opacity-50"
+                        className="cursor-pointer text-orange-500 hover:text-orange-600 font-semibold disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         Resend OTP
                       </button>
@@ -430,7 +430,7 @@ export default function VendorSignup() {
                 <button
                   onClick={() => setStep(1)}
                   disabled={loading}
-                  className="text-sm text-orange-500 hover:text-orange-600 font-medium w-full disabled:cursor-not-allowed disabled:opacity-50"
+                  className="cursor-pointer text-sm text-orange-500 hover:text-orange-600 font-medium w-full disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   Edit Email
                 </button>
@@ -438,7 +438,7 @@ export default function VendorSignup() {
                 <button
                   onClick={handleVerifyOtp}
                   disabled={loading}
-                  className="w-full bg-orange-400 hover:bg-orange-500 text-white py-3.5 rounded-lg font-semibold transition-colors text-sm disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="cursor-pointer w-full bg-orange-400 hover:bg-orange-500 text-white py-3.5 rounded-lg font-semibold transition-colors text-sm disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {loading ? (
                     <>

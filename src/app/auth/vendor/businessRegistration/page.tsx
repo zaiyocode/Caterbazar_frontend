@@ -112,7 +112,7 @@ export default function BusinessRegistration() {
           {/* Home Button */}
           <button
             onClick={() => router.push("/")}
-            className="mb-6 flex items-center gap-2 text-gray-600 hover:text-orange-600 transition-colors"
+            className="cursor-pointer mb-6 flex items-center gap-2 text-gray-600 hover:text-orange-600 transition-colors"
             aria-label="Go to home"
           >
             <Home className="w-4 h-4" />
@@ -275,11 +275,11 @@ export default function BusinessRegistration() {
               />
               <label className="ml-3 text-sm text-gray-600">
                 I agree to the{" "}
-                <button className="text-orange-500 hover:text-orange-600 font-medium">
+                <button className="cursor-pointer text-orange-500 hover:text-orange-600 font-medium">
                   terms
                 </button>{" "}
                 and{" "}
-                <button className="text-orange-500 hover:text-orange-600 font-medium">
+                <button className="cursor-pointer text-orange-500 hover:text-orange-600 font-medium">
                   privacy policy
                 </button>
               </label>
@@ -288,7 +288,7 @@ export default function BusinessRegistration() {
             <button
               onClick={handleRegistration}
               disabled={loading}
-              className="w-full bg-orange-400 hover:bg-orange-500 text-white py-3.5 rounded-lg font-semibold transition-colors text-sm mt-2 disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="cursor-pointer w-full bg-orange-400 hover:bg-orange-500 text-white py-3.5 rounded-lg font-semibold transition-colors text-sm mt-2 disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>
@@ -305,7 +305,7 @@ export default function BusinessRegistration() {
             <button
               onClick={() => router.push('/auth')}
               disabled={loading}
-              className="text-orange-500 hover:text-orange-600 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+              className="cursor-pointer text-orange-500 hover:text-orange-600 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Back to Login
             </button>

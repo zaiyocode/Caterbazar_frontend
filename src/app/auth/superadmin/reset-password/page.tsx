@@ -182,7 +182,7 @@ export default function ResetPasswordPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-3.5 text-gray-400 hover:text-gray-600"
+                className="cursor-pointer absolute right-3 top-3.5 text-gray-400 hover:text-gray-600"
               >
                 {showPassword ? (
                   <EyeOff className="w-5 h-5" />
@@ -253,7 +253,7 @@ export default function ResetPasswordPage() {
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-3 top-3.5 text-gray-400 hover:text-gray-600"
+                className="cursor-pointer absolute right-3 top-3.5 text-gray-400 hover:text-gray-600"
               >
                 {showConfirmPassword ? (
                   <EyeOff className="w-5 h-5" />
@@ -275,7 +275,7 @@ export default function ResetPasswordPage() {
           <button
             type="submit"
             disabled={loading || !newPassword || !confirmPassword || newPassword !== confirmPassword}
-            className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-gray-400 text-white font-semibold py-2.5 rounded-lg transition duration-200 flex items-center justify-center gap-2 mt-6"
+            className="cursor-pointer w-full bg-orange-500 hover:bg-orange-600 disabled:bg-gray-400 text-white font-semibold py-2.5 rounded-lg transition duration-200 flex items-center justify-center gap-2 mt-6"
           >
             {loading ? (
               <>
@@ -292,7 +292,7 @@ export default function ResetPasswordPage() {
         <div className="mt-6 pt-6 border-t border-gray-200">
           <Link
             href="/auth/superadmin/signin"
-            className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium text-sm"
+            className="cursor-pointer flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium text-sm"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Sign In

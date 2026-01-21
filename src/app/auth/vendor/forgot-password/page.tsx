@@ -170,7 +170,7 @@ export default function VendorForgotPassword() {
                 </p>
                 <button
                   onClick={handleContinue}
-                  className="w-full bg-orange-500 text-white py-3.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors text-sm"
+                  className="cursor-pointer w-full bg-orange-500 text-white py-3.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors text-sm"
                 >
                   Continue to Verify OTP
                 </button>
@@ -184,7 +184,7 @@ export default function VendorForgotPassword() {
               Don't have a vendor account?{" "}
               <button
                 onClick={() => router.push("/auth/vendor/signup")}
-                className="text-orange-500 hover:text-orange-600 font-semibold"
+                className="cursor-pointer text-orange-500 hover:text-orange-600 font-semibold"
               >
                 Sign Up
               </button>

@@ -101,7 +101,7 @@ export default function CaterersSection() {
                       <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 truncate">
                         {vendor.businessRegistrationId?.brandName || vendor.userId.fullName}
                       </h3>
-                      <button className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-full border-2 border-gray-300 flex items-center justify-center group-hover:border-orange-500 group-hover:bg-orange-500 transition-all shrink-0">
+                      <button className="cursor-pointer w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-full border-2 border-gray-300 flex items-center justify-center group-hover:border-orange-500 group-hover:bg-orange-500 transition-all shrink-0">
                         <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 group-hover:text-white transition-colors" />
                       </button>
                     </div>

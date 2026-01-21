@@ -215,7 +215,7 @@ export default function HeroSection() {
                           variant="outline"
                           role="combobox"
                           aria-expanded={vendorTypeOpen}
-                          className="w-full justify-between shadow-none h-9 sm:h-10 text-xs sm:text-sm font-normal text-gray-600 bg-white hover:bg-gray-50 border-gray-300"
+                          className="cursor-pointer w-full justify-between shadow-none h-9 sm:h-10 text-xs sm:text-sm font-normal text-gray-600 bg-white hover:bg-gray-50 border-gray-300"
                         >
                           <div className="flex items-center gap-2">
                             <Utensils className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
@@ -268,7 +268,7 @@ export default function HeroSection() {
                           variant="outline"
                           role="combobox"
                           aria-expanded={localityOpen}
-                          className="w-full justify-between shadow-none h-9 sm:h-10 text-xs sm:text-sm font-normal text-gray-600 bg-white hover:bg-gray-50 border-gray-300"
+                          className="cursor-pointer w-full justify-between shadow-none h-9 sm:h-10 text-xs sm:text-sm font-normal text-gray-600 bg-white hover:bg-gray-50 border-gray-300"
                         >
                           <div className="flex items-center gap-2">
                             <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
@@ -328,7 +328,7 @@ export default function HeroSection() {
 
                   <button
                     onClick={handleSearch}
-                    className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-orange-900 hover:bg-orange-800 text-white rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 text-xs sm:text-sm"
+                    className="cursor-pointer w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-orange-900 hover:bg-orange-800 text-white rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 text-xs sm:text-sm"
                   >
                     Search
                     <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />

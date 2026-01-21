@@ -71,10 +71,10 @@ export default function Footer() {
 
           {/* Right Section - Social Media */}
           <div className="text-center md:text-right">
-            <h3 className="text-white font-semibold text-lg mb-6">Follow Us</h3>
+            <h3 className="text-white font-semibold text-lg mb-6 cursor-pointer">Follow Us</h3>
             <div className="flex justify-center md:justify-end gap-6">
               <a
-                href="https://www.facebook.com/profile.php?id=61585158548282"
+                href="https://www.facebook.com/share/1FqiW3bKau/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white  transition-colors"
@@ -135,13 +135,13 @@ export default function Footer() {
             <div className="flex gap-6">
               <Link
                 href="/privacy"
-                className="text-sm text-gray-400 hover:text-orange-500 transition-colors"
+                className="cursor-pointer text-sm text-gray-400 hover:text-orange-500 transition-colors"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms"
-                className="text-sm text-gray-400 hover:text-orange-500 transition-colors"
+                className="cursor-pointer text-sm text-gray-400 hover:text-orange-500 transition-colors"
               >
                 Terms of Service
               </Link>

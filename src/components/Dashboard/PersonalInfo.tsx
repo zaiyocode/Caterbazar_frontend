@@ -239,7 +239,7 @@ export default function PersonalInfo() {
             <button
               type="button"
               onClick={() => document.getElementById('profilePhotoInput')?.click()}
-              className="px-4 sm:px-6 py-2 sm:py-2.5 border-2 border-gray-300 rounded-lg font-semibold text-sm sm:text-base text-gray-700 hover:border-orange-500 hover:text-orange-500 transition-colors flex items-center gap-2 whitespace-nowrap"
+              className="cursor-pointer px-4 sm:px-6 py-2 sm:py-2.5 border-2 border-gray-300 rounded-lg font-semibold text-sm sm:text-base text-gray-700 hover:border-orange-500 hover:text-orange-500 transition-colors flex items-center gap-2 whitespace-nowrap"
             >
               <Upload className="w-4 h-4" />
               Upload New Photo
@@ -249,7 +249,7 @@ export default function PersonalInfo() {
                 type="button"
                 onClick={handleDeleteProfilePhoto}
                 disabled={deleting}
-                className="px-4 sm:px-6 py-2 sm:py-2.5 border-2 border-red-300 rounded-lg font-semibold text-sm sm:text-base text-red-600 hover:border-red-500 hover:bg-red-50 transition-colors flex items-center gap-2 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                className="cursor-pointer px-4 sm:px-6 py-2 sm:py-2.5 border-2 border-red-300 rounded-lg font-semibold text-sm sm:text-base text-red-600 hover:border-red-500 hover:bg-red-50 transition-colors flex items-center gap-2 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {deleting ? (
                   <>
@@ -455,7 +455,7 @@ export default function PersonalInfo() {
           <button
             onClick={handleSaveProfile}
             disabled={saving}
-            className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-orange-500 text-white rounded-lg text-sm sm:text-base font-semibold hover:bg-orange-600 transition-colors disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="cursor-pointer w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-orange-500 text-white rounded-lg text-sm sm:text-base font-semibold hover:bg-orange-600 transition-colors disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {saving ? (
               <>

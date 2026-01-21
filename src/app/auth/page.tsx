@@ -64,7 +64,7 @@ export default function CaterBazarLogin() {
                 setActiveTab("customer");
                 router.push("/auth/customer/signin");
               }}
-              className={`flex-1 py-3 sm:py-4 px-4 sm:px-6 rounded-lg font-medium transition-all border-2 flex items-center justify-center text-sm sm:text-base ${
+              className={`cursor-pointer flex-1 py-3 sm:py-4 px-4 sm:px-6 rounded-lg font-medium transition-all border-2 flex items-center justify-center text-sm sm:text-base ${
                 activeTab === "customer"
                   ? "bg-orange-500 text-white border-orange-500 hover:bg-orange-600"
                   : "bg-white text-gray-800 border-gray-300 hover:border-orange-500 hover:text-orange-500"
@@ -77,7 +77,7 @@ export default function CaterBazarLogin() {
                 setActiveTab("vendor");
                 router.push("/auth/vendor/signin");
               }}
-              className={`flex-1 py-3 sm:py-4 px-4 sm:px-6 rounded-lg font-medium transition-all border-2 flex items-center justify-center text-sm sm:text-base ${
+              className={`cursor-pointer flex-1 py-3 sm:py-4 px-4 sm:px-6 rounded-lg font-medium transition-all border-2 flex items-center justify-center text-sm sm:text-base ${
                 activeTab === "vendor"
                   ? "bg-orange-500 text-white border-orange-500 hover:bg-orange-600"
                   : "bg-white text-gray-800 border-gray-300 hover:border-orange-500 hover:text-orange-500"

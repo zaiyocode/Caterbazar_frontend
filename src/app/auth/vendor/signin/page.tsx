@@ -125,7 +125,7 @@ export default function VendorSignin() {
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   disabled={loading}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 disabled:cursor-not-allowed"
+                  className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 disabled:cursor-not-allowed"
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -140,7 +140,7 @@ export default function VendorSignin() {
                   router.push("/auth/vendor/forgot-password");
                 }}
                 disabled={loading}
-                className="text-sm text-orange-500 hover:text-orange-600 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                className="cursor-pointer text-sm text-orange-500 hover:text-orange-600 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Forgot Password?
               </button>
@@ -149,7 +149,7 @@ export default function VendorSignin() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-orange-500 text-white py-3.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors text-sm disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="cursor-pointer w-full bg-orange-500 text-white py-3.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors text-sm disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>
@@ -167,7 +167,7 @@ export default function VendorSignin() {
             New to CaterBazar?{' '}
             <a 
               href="/auth/vendor/signup"
-              className="text-orange-500 hover:text-orange-600 font-semibold"
+              className="cursor-pointer text-orange-500 hover:text-orange-600 font-semibold"
             >
               Sign Up
             </a>

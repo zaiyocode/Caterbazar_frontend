@@ -143,7 +143,7 @@ function VendorResetPasswordContent() {
           <div className="mb-6 flex items-center gap-2">
             <button
               onClick={() => router.back()}
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-800 transition-colors"
+              className="cursor-pointer flex items-center gap-2 text-gray-600 hover:text-gray-800 transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               <span className="text-sm">Back</span>
@@ -151,7 +151,7 @@ function VendorResetPasswordContent() {
             <span className="text-gray-300">|</span>
             <button
               onClick={() => router.push("/")}
-              className="flex items-center gap-2 text-gray-600 hover:text-orange-600 transition-colors"
+              className="cursor-pointer flex items-center gap-2 text-gray-600 hover:text-orange-600 transition-colors"
               aria-label="Go to home"
             >
               <Home className="w-4 h-4" />
@@ -226,7 +226,7 @@ function VendorResetPasswordContent() {
                       type="button"
                       onClick={handleResendOTP}
                       disabled={resending}
-                      className="text-sm text-orange-500 hover:text-orange-600 font-semibold flex items-center gap-2 mx-auto disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="cursor-pointer text-sm text-orange-500 hover:text-orange-600 font-semibold flex items-center gap-2 mx-auto disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {resending ? (
                         <>
@@ -246,7 +246,7 @@ function VendorResetPasswordContent() {
                 <button
                   type="submit"
                   disabled={loading || otp.join("").length !== 6}
-                  className="w-full bg-orange-500 text-white py-3.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors text-sm disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="cursor-pointer w-full bg-orange-500 text-white py-3.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors text-sm disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {loading ? (
                     <>
@@ -274,7 +274,7 @@ function VendorResetPasswordContent() {
                 </p>
                 <button
                   onClick={handleContinue}
-                  className="w-full bg-orange-500 text-white py-3.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors text-sm"
+                  className="cursor-pointer w-full bg-orange-500 text-white py-3.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors text-sm"
                 >
                   Set New Password
                 </button>

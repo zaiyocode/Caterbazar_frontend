@@ -254,7 +254,7 @@ export default function UserProfile() {
           <p className="text-gray-600">Failed to load profile</p>
           <button
             onClick={() => router.push("/auth")}
-            className="mt-4 text-orange-500 hover:text-orange-600"
+            className="cursor-pointer mt-4 text-orange-500 hover:text-orange-600"
           >
             Go to Login
           </button>
@@ -311,7 +311,7 @@ export default function UserProfile() {
               <button
                 onClick={() => document.getElementById('profilePictureInput')?.click()}
                 disabled={uploadingPicture}
-                className="absolute bottom-0 right-0 w-8 h-8 bg-orange-500 hover:bg-orange-600 text-white rounded-full flex items-center justify-center transition-colors disabled:bg-orange-300"
+                className="cursor-pointer absolute bottom-0 right-0 w-8 h-8 bg-orange-500 hover:bg-orange-600 text-white rounded-full flex items-center justify-center transition-colors disabled:bg-orange-300"
                 title="Upload new profile picture"
               >
                 {uploadingPicture ? (
@@ -356,7 +356,7 @@ export default function UserProfile() {
 
             <button
               onClick={() => setIsEditingProfile(!isEditingProfile)}
-              className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors flex items-center gap-2 text-sm sm:text-base"
+              className="cursor-pointer px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors flex items-center gap-2 text-sm sm:text-base"
             >
               {isEditingProfile ? (
                 <>
@@ -409,7 +409,7 @@ export default function UserProfile() {
                 <button
                   onClick={handleUpdateProfile}
                   disabled={updatingProfile}
-                  className="w-full sm:w-auto px-6 py-2.5 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors disabled:bg-orange-300 flex items-center justify-center gap-2 text-sm"
+                  className="cursor-pointer w-full sm:w-auto px-6 py-2.5 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors disabled:bg-orange-300 flex items-center justify-center gap-2 text-sm"
                 >
                   {updatingProfile ? (
                     <>
@@ -516,7 +516,7 @@ export default function UserProfile() {
             {!isChangingPassword && (
               <button
                 onClick={() => setIsChangingPassword(true)}
-                className="px-4 py-2 text-orange-500 hover:bg-orange-50 rounded-lg transition-colors text-sm"
+                className="cursor-pointer px-4 py-2 text-orange-500 hover:bg-orange-50 rounded-lg transition-colors text-sm"
               >
                 Change
               </button>
@@ -540,7 +540,7 @@ export default function UserProfile() {
                   <button
                     type="button"
                     onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                   >
                     {showCurrentPassword ? (
                       <EyeOff className="w-5 h-5" />
@@ -566,7 +566,7 @@ export default function UserProfile() {
                   <button
                     type="button"
                     onClick={() => setShowNewPassword(!showNewPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                   >
                     {showNewPassword ? (
                       <EyeOff className="w-5 h-5" />
@@ -592,7 +592,7 @@ export default function UserProfile() {
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                   >
                     {showConfirmPassword ? (
                       <EyeOff className="w-5 h-5" />
@@ -607,7 +607,7 @@ export default function UserProfile() {
                 <button
                   onClick={handleChangePassword}
                   disabled={changingPassword}
-                  className="flex-1 px-6 py-2.5 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors disabled:bg-orange-300 flex items-center justify-center gap-2 text-sm"
+                  className="cursor-pointer flex-1 px-6 py-2.5 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors disabled:bg-orange-300 flex items-center justify-center gap-2 text-sm"
                 >
                   {changingPassword ? (
                     <>
@@ -630,7 +630,7 @@ export default function UserProfile() {
                     setError("");
                   }}
                   disabled={changingPassword}
-                  className="px-6 py-2.5 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors disabled:bg-gray-100 text-sm"
+                  className="cursor-pointer px-6 py-2.5 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors disabled:bg-gray-100 text-sm"
                 >
                   Cancel
                 </button>
@@ -650,7 +650,7 @@ export default function UserProfile() {
           </p>
           <button
             onClick={() => setShowDeleteModal(true)}
-            className="px-4 sm:px-6 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2 text-sm"
+            className="cursor-pointer px-4 sm:px-6 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2 text-sm"
           >
             <Trash2 className="w-4 h-4" />
             Delete Account
@@ -684,7 +684,7 @@ export default function UserProfile() {
                   <button
                     onClick={handleDeleteAccount}
                     disabled={deletingAccount}
-                    className="flex-1 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors disabled:bg-red-400 flex items-center justify-center gap-2"
+                    className="cursor-pointer flex-1 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors disabled:bg-red-400 flex items-center justify-center gap-2"
                   >
                     {deletingAccount ? (
                       <>
@@ -698,7 +698,7 @@ export default function UserProfile() {
                   <button
                     onClick={() => setShowDeleteModal(false)}
                     disabled={deletingAccount}
-                    className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors disabled:bg-gray-100"
+                    className="cursor-pointer px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors disabled:bg-gray-100"
                   >
                     Cancel
                   </button>

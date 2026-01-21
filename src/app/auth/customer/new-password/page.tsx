@@ -101,7 +101,7 @@ function UserNewPasswordContent() {
           <div className="mb-6 flex items-center gap-2">
             <button
               onClick={() => router.back()}
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-800 transition-colors"
+              className="cursor-pointer flex items-center gap-2 text-gray-600 hover:text-gray-800 transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               <span className="text-sm">Back</span>
@@ -109,7 +109,7 @@ function UserNewPasswordContent() {
             <span className="text-gray-300">|</span>
             <button
               onClick={() => router.push("/")}
-              className="flex items-center gap-2 text-gray-600 hover:text-orange-600 transition-colors"
+              className="cursor-pointer flex items-center gap-2 text-gray-600 hover:text-orange-600 transition-colors"
               aria-label="Go to home"
             >
               <Home className="w-4 h-4" />
@@ -165,7 +165,7 @@ function UserNewPasswordContent() {
                       type="button"
                       onClick={() => setShowNewPassword(!showNewPassword)}
                       disabled={loading}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 disabled:cursor-not-allowed"
+                      className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 disabled:cursor-not-allowed"
                     >
                       {showNewPassword ? (
                         <EyeOff className="w-5 h-5" />
@@ -196,7 +196,7 @@ function UserNewPasswordContent() {
                       type="button"
                       onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                       disabled={loading}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 disabled:cursor-not-allowed"
+                      className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 disabled:cursor-not-allowed"
                     >
                       {showConfirmPassword ? (
                         <EyeOff className="w-5 h-5" />
@@ -210,7 +210,7 @@ function UserNewPasswordContent() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-orange-500 text-white py-3.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors text-sm disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="cursor-pointer w-full bg-orange-500 text-white py-3.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors text-sm disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {loading ? (
                     <>
@@ -238,7 +238,7 @@ function UserNewPasswordContent() {
                 </p>
                 <button
                   onClick={handleContinue}
-                  className="w-full bg-orange-500 text-white py-3.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors text-sm"
+                  className="cursor-pointer w-full bg-orange-500 text-white py-3.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors text-sm"
                 >
                   Continue to Sign In
                 </button>

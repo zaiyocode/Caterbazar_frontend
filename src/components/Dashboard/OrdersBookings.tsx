@@ -128,7 +128,7 @@ export default function OrdersBookings() {
           <div className="px-4 py-2 bg-green-500 text-white rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap">
             Premium Active - 30 days remaining
           </div>
-          <button className="text-blue-500 hover:text-blue-600 font-semibold text-sm sm:text-base whitespace-nowrap">
+          <button className="cursor-pointer text-blue-500 hover:text-blue-600 font-semibold text-sm sm:text-base whitespace-nowrap">
             Upgrade Plan
           </button>
         </div>
@@ -165,7 +165,7 @@ export default function OrdersBookings() {
 
       {/* Revenue Report Link */}
       <div className="mb-6">
-        <button className="text-blue-500 hover:text-blue-600 font-semibold text-sm sm:text-base">
+        <button className="cursor-pointer text-blue-500 hover:text-blue-600 font-semibold text-sm sm:text-base">
           View Revenue Report
         </button>
       </div>
@@ -235,7 +235,7 @@ export default function OrdersBookings() {
         </div>
 
         <div className="mt-3 flex justify-end">
-          <button className="text-blue-500 hover:text-blue-600 font-semibold text-sm">
+          <button className="cursor-pointer text-blue-500 hover:text-blue-600 font-semibold text-sm">
             Clear Filters
           </button>
         </div>
@@ -396,7 +396,7 @@ export default function OrdersBookings() {
           <button
             onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
             disabled={currentPage === 1}
-            className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="cursor-pointer px-4 py-2 border border-gray-300 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Previous
           </button>
@@ -406,7 +406,7 @@ export default function OrdersBookings() {
               <button
                 key={page}
                 onClick={() => setCurrentPage(page)}
-                className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg text-sm font-semibold transition-colors ${
+                className={`cursor-pointer w-8 h-8 sm:w-10 sm:h-10 rounded-lg text-sm font-semibold transition-colors ${
                   currentPage === page
                     ? 'bg-orange-500 text-white'
                     : 'border border-gray-300 text-gray-700 hover:bg-gray-50'
@@ -419,7 +419,7 @@ export default function OrdersBookings() {
 
           <button
             onClick={() => setCurrentPage(currentPage + 1)}
-            className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+            className="cursor-pointer px-4 py-2 border border-gray-300 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
           >
             Next
           </button>

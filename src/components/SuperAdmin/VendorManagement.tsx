@@ -342,7 +342,7 @@ export default function VendorManagement({ isAdminPanel = false }: VendorManagem
                         <div className="flex items-center gap-1">
                           <button 
                             onClick={() => handleViewVendor(vendor.userId?._id || vendor._id)}
-                            className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" 
+                            className="cursor-pointer p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" 
                             title="View Details"
                           >
                             <Eye className="w-4 h-4" />
@@ -421,7 +421,7 @@ export default function VendorManagement({ isAdminPanel = false }: VendorManagem
                   <div className="flex items-center gap-2">
                     <button 
                       onClick={() => handleViewVendor(vendor.userId?._id || vendor._id)}
-                      className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-50 text-blue-700 rounded-lg font-medium text-sm hover:bg-blue-100 transition-colors"
+                      className="cursor-pointer w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-50 text-blue-700 rounded-lg font-medium text-sm hover:bg-blue-100 transition-colors"
                     >
                       <Eye className="w-4 h-4" />
                       View Details
@@ -441,7 +441,7 @@ export default function VendorManagement({ isAdminPanel = false }: VendorManagem
                 <button 
                   onClick={() => handlePageChange(pagination.currentPage - 1)}
                   disabled={pagination.currentPage === 1}
-                  className="px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                  className="cursor-pointer px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                 >
                   Previous
                 </button>
@@ -457,7 +457,7 @@ export default function VendorManagement({ isAdminPanel = false }: VendorManagem
                       <button
                         key={page}
                         onClick={() => handlePageChange(page)}
-                        className={`px-3 py-2 rounded-lg text-xs sm:text-sm transition-colors ${
+                        className={` cursor-pointer px-3 py-2 rounded-lg text-xs sm:text-sm transition-colors ${
                           page === pagination.currentPage
                             ? 'bg-orange-500 text-white'
                             : 'border border-gray-300 hover:bg-gray-50'
@@ -477,7 +477,7 @@ export default function VendorManagement({ isAdminPanel = false }: VendorManagem
                 <button 
                   onClick={() => handlePageChange(pagination.currentPage + 1)}
                   disabled={pagination.currentPage === pagination.totalPages}
-                  className="px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                  className="cursor-pointer px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                 >
                   Next
                 </button>

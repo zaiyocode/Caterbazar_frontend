@@ -291,7 +291,7 @@ export default function GalleryManagement() {
         </div>
         <button
           onClick={() => setShowUploadModal(true)}
-          className="inline-flex items-center justify-center px-6 py-2.5 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors gap-2"
+          className="cursor-pointer inline-flex items-center justify-center px-6 py-2.5 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors gap-2"
         >
           <Upload className="w-5 h-5" />
           Upload Image
@@ -323,7 +323,7 @@ export default function GalleryManagement() {
             <button
               key={cat.value}
               onClick={() => setSelectedCategory(cat.value)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+              className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 selectedCategory === cat.value
                   ? 'bg-orange-500 text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -347,7 +347,7 @@ export default function GalleryManagement() {
           <p className="text-gray-600 mb-6">Upload your first image to get started</p>
           <button
             onClick={() => setShowUploadModal(true)}
-            className="inline-flex items-center px-6 py-2.5 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors gap-2"
+            className="cursor-pointer inline-flex items-center px-6 py-2.5 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors gap-2"
           >
             <Upload className="w-5 h-5" />
             Upload Image
@@ -369,14 +369,14 @@ export default function GalleryManagement() {
                 <div className="absolute inset-0 bg-black/30 bg-opacity-0 group-hover:bg-opacity-40 transition-all flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100">
                   <button
                     onClick={() => openEditModal(image)}
-                    className="p-2 bg-white rounded-lg hover:bg-gray-100 transition-colors"
+                    className="cursor-pointer p-2 bg-white rounded-lg hover:bg-gray-100 transition-colors"
                     title="Edit"
                   >
                     <Edit2 className="w-5 h-5 text-gray-700" />
                   </button>
                   <button
                     onClick={() => handleDelete(image._id)}
-                    className="p-2 bg-white rounded-lg hover:bg-red-50 transition-colors"
+                    className="cursor-pointer p-2 bg-white rounded-lg hover:bg-red-50 transition-colors"
                     title="Delete"
                   >
                     <Trash2 className="w-5 h-5 text-red-600" />
@@ -409,7 +409,7 @@ export default function GalleryManagement() {
               </h2>
               <button
                 onClick={closeModal}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="cursor-pointer text-gray-400 hover:text-gray-600 transition-colors"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -497,14 +497,14 @@ export default function GalleryManagement() {
               <button
                 onClick={closeModal}
                 disabled={uploading}
-                className="px-6 py-2.5 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors disabled:opacity-50"
+                className="cursor-pointer px-6 py-2.5 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors disabled:opacity-50"
               >
                 Cancel
               </button>
               <button
                 onClick={editingImage ? handleUpdate : handleUpload}
                 disabled={uploading}
-                className="px-6 py-2.5 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center gap-2"
+                className="cursor-pointer px-6 py-2.5 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center gap-2"
               >
                 {uploading ? (
                   <>

@@ -383,7 +383,7 @@ export default function CaterBazarSignup() {
               <button
                 onClick={() => setStep(1)}
                 disabled={loading}
-                className="flex items-center gap-2 text-gray-600 hover:text-gray-800 mb-8 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="cursor-pointer flex items-center gap-2 text-gray-600 hover:text-gray-800 mb-8 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span className="text-sm">Back</span>
@@ -438,7 +438,7 @@ export default function CaterBazarSignup() {
                       <button
                         onClick={handleResendOtp}
                         disabled={loading}
-                        className="text-orange-500 hover:text-orange-600 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="cursor-pointer text-orange-500 hover:text-orange-600 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         Resend OTP
                       </button>
@@ -449,7 +449,7 @@ export default function CaterBazarSignup() {
                 <button 
                   onClick={() => setStep(1)}
                   disabled={loading}
-                  className="text-sm text-orange-500 hover:text-orange-600 font-medium w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="cursor-pointer text-sm text-orange-500 hover:text-orange-600 font-medium w-full disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Edit Email
                 </button>
@@ -457,7 +457,7 @@ export default function CaterBazarSignup() {
                 <button
                   onClick={handleVerifyOtp}
                   disabled={loading}
-                  className="w-full bg-orange-400 hover:bg-orange-500 text-white py-3.5 rounded-lg font-semibold transition-colors text-sm disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="cursor-pointer w-full bg-orange-400 hover:bg-orange-500 text-white py-3.5 rounded-lg font-semibold transition-colors text-sm disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {loading ? (
                     <>

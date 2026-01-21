@@ -402,11 +402,11 @@ export default function BusinessRegistration() {
             />
             <label className="ml-3 text-sm text-gray-600">
               I agree to the{" "}
-              <button className="text-orange-500 hover:text-orange-600 font-medium">
+              <button className="text-orange-500 cursor-pointer hover:text-orange-600 font-medium">
                 terms
               </button>{" "}
               and{" "}
-              <button className="text-orange-500 hover:text-orange-600 font-medium">
+              <button className="text-orange-500 cursor-pointer hover:text-orange-600 font-medium">
                 privacy policy
               </button>
             </label>
@@ -415,7 +415,7 @@ export default function BusinessRegistration() {
           <button
             onClick={handleRegistration}
             disabled={loading}
-            className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-orange-500 text-white rounded-lg text-sm sm:text-base font-semibold hover:bg-orange-600 transition-colors disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="cursor-pointer w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-orange-500 text-white rounded-lg text-sm sm:text-base font-semibold hover:bg-orange-600 transition-colors disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {loading ? (
               <>

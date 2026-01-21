@@ -1196,7 +1196,7 @@ function SearchResultsContent() {
                 </p>
               </div>
               {pagination.pages > 1 && (
-                <button className="flex items-center gap-2 text-orange-500 hover:text-orange-600 font-semibold text-sm">
+                <button className="cursor-pointer flex items-center gap-2 text-orange-500 hover:text-orange-600 font-semibold text-sm">
                   Next Page
                   <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
@@ -1306,7 +1306,7 @@ function SearchResultsContent() {
                             onClick={() =>
                               router.push(`/vendors/${vendor?.userId?._id}`)
                             }
-                            className="px-4 sm:px-6 py-1.5 sm:py-2 border border-orange-500 text-orange-500 rounded-full font-semibold hover:bg-orange-500 hover:text-white transition-colors text-xs sm:text-sm whitespace-nowrap"
+                            className="cursor-pointer px-4 sm:px-6 py-1.5 sm:py-2 border border-orange-500 text-orange-500 rounded-full font-semibold hover:bg-orange-500 hover:text-white transition-colors text-xs sm:text-sm whitespace-nowrap"
                           >
                             Book now
                           </button>

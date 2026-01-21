@@ -197,7 +197,7 @@ export default function VendorDetailsPage({
                           prev === 0 ? setupImages.length - 1 : prev - 1
                         )
                       }
-                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-hover:opacity-100"
+                      className="cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-hover:opacity-100"
                       aria-label="Previous image"
                     >
                       <svg
@@ -220,7 +220,7 @@ export default function VendorDetailsPage({
                           prev === setupImages.length - 1 ? 0 : prev + 1
                         )
                       }
-                      className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-hover:opacity-100"
+                      className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-hover:opacity-100"
                       aria-label="Next image"
                     >
                       <svg
@@ -248,7 +248,7 @@ export default function VendorDetailsPage({
                     <button
                       key={image._id}
                       onClick={() => setCurrentImageIndex(index)}
-                      className={`shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                      className={`cursor-pointer shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden border-2 transition-all ${
                         currentImageIndex === index
                           ? "border-orange-500 ring-2 ring-orange-200"
                           : "border-gray-300 hover:border-orange-300"
@@ -430,7 +430,7 @@ export default function VendorDetailsPage({
                   return (
                     <button
                       onClick={handleWhatsAppClick}
-                      className="w-full bg-green-600 hover:bg-green-700 text-white py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold flex items-center justify-center gap-2 transition-colors"
+                      className="cursor-pointer w-full bg-green-600 hover:bg-green-700 text-white py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold flex items-center justify-center gap-2 transition-colors"
                     >
                       <svg
                         className="w-4 h-4 sm:w-5 sm:h-5"
@@ -445,7 +445,7 @@ export default function VendorDetailsPage({
                 })()}
                 <button
                   onClick={handleInquiryClick}
-                  className="w-full border-2 border-orange-500 text-orange-500 hover:bg-orange-50 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold flex items-center justify-center gap-2 transition-colors"
+                  className="cursor-pointer w-full border-2 border-orange-500 text-orange-500 hover:bg-orange-50 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold flex items-center justify-center gap-2 transition-colors"
                 >
                   <svg
                     className="w-4 h-4 sm:w-5 sm:h-5"
@@ -500,7 +500,7 @@ export default function VendorDetailsPage({
                           prev === 0 ? setupImages.length - 1 : prev - 1
                         )
                       }
-                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-hover:opacity-100"
+                      className="cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-hover:opacity-100"
                       aria-label="Previous image"
                     >
                       <svg
@@ -523,7 +523,7 @@ export default function VendorDetailsPage({
                           prev === setupImages.length - 1 ? 0 : prev + 1
                         )
                       }
-                      className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-hover:opacity-100"
+                      className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-hover:opacity-100"
                       aria-label="Next image"
                     >
                       <svg
@@ -551,7 +551,7 @@ export default function VendorDetailsPage({
                     <button
                       key={image._id}
                       onClick={() => setCurrentImageIndex(index)}
-                      className={`shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                      className={`cursor-pointer shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden border-2 transition-all ${
                         currentImageIndex === index
                           ? "border-orange-500 ring-2 ring-orange-200"
                           : "border-gray-300 hover:border-orange-300"
@@ -606,7 +606,7 @@ export default function VendorDetailsPage({
                 <div className="relative">
                   <button
                     onClick={() => setIsShareModalOpen(!isShareModalOpen)}
-                    className="p-2.5 sm:p-3 bg-orange-50 hover:bg-orange-100 text-orange-500 rounded-full transition-colors flex items-center justify-center cursor-pointer"
+                    className="cursor-pointer p-2.5 sm:p-3 bg-orange-50 hover:bg-orange-100 text-orange-500 rounded-full transition-colors flex items-center justify-center cursor-pointer"
                     title="Share this vendor"
                   >
                     <Share2 className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -625,7 +625,7 @@ export default function VendorDetailsPage({
                           href={shareLinks.whatsapp}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-3 p-2.5 hover:bg-gray-50 rounded-lg transition-colors text-sm"
+                          className="cursor-pointer flex items-center gap-3 p-2.5 hover:bg-gray-50 rounded-lg transition-colors text-sm"
                         >
                           <svg
                             className="w-5 h-5 text-green-600"
@@ -642,7 +642,7 @@ export default function VendorDetailsPage({
                           href={shareLinks.facebook}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-3 p-2.5 hover:bg-gray-50 rounded-lg transition-colors text-sm"
+                          className="cursor-pointer flex items-center gap-3 p-2.5 hover:bg-gray-50 rounded-lg transition-colors text-sm"
                         >
                           <Facebook className="w-5 h-5 text-blue-600" />
                           <span className="text-gray-700">Facebook</span>
@@ -653,7 +653,7 @@ export default function VendorDetailsPage({
                           href={shareLinks.twitter}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-3 p-2.5 hover:bg-gray-50 rounded-lg transition-colors text-sm"
+                          className="cursor-pointer flex items-center gap-3 p-2.5 hover:bg-gray-50 rounded-lg transition-colors text-sm"
                         >
                           <Twitter className="w-5 h-5 text-black" />
                           <span className="text-gray-700">Twitter (X)</span>
@@ -664,7 +664,7 @@ export default function VendorDetailsPage({
                           href={shareLinks.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-3 p-2.5 hover:bg-gray-50 rounded-lg transition-colors text-sm"
+                          className="cursor-pointer flex items-center gap-3 p-2.5 hover:bg-gray-50 rounded-lg transition-colors text-sm"
                         >
                           <Linkedin className="w-5 h-5 text-blue-700" />
                           <span className="text-gray-700">LinkedIn</span>
@@ -682,7 +682,7 @@ export default function VendorDetailsPage({
                         {/* Copy Link */}
                         <button
                           onClick={handleCopyLink}
-                          className="w-full flex items-center gap-3 p-2.5 hover:bg-gray-50 rounded-lg transition-colors text-sm text-left"
+                          className="cursor-pointer w-full flex items-center gap-3 p-2.5 hover:bg-gray-50 rounded-lg transition-colors text-sm text-left"
                         >
                           {isCopied ? (
                             <>
@@ -757,7 +757,7 @@ export default function VendorDetailsPage({
                         href={vendor.socialMedia.facebookHandle}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium"
+                        className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium"
                       >
                         <Facebook className="w-4 h-4" />
                         Facebook
@@ -768,7 +768,7 @@ export default function VendorDetailsPage({
                         href={vendor.socialMedia.instagramHandle}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-lg transition-colors text-sm font-medium"
+                        className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-lg transition-colors text-sm font-medium"
                       >
                         <Instagram className="w-4 h-4" />
                         Instagram
@@ -779,7 +779,7 @@ export default function VendorDetailsPage({
                         href={vendor.socialMedia.personalWebsite}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-900 text-white rounded-lg transition-colors text-sm font-medium"
+                        className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-900 text-white rounded-lg transition-colors text-sm font-medium"
                       >
                         <Globe className="w-4 h-4" />
                         Website
@@ -1138,7 +1138,7 @@ export default function VendorDetailsPage({
                   return (
                     <button
                       onClick={handleWhatsAppClick}
-                      className="w-full bg-green-600 hover:bg-green-700 text-white py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold flex items-center justify-center gap-2 transition-colors"
+                      className="cursor-pointer w-full bg-green-600 hover:bg-green-700 text-white py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold flex items-center justify-center gap-2 transition-colors"
                     >
                       <svg
                         className="w-4 h-4 sm:w-5 sm:h-5"
@@ -1153,7 +1153,7 @@ export default function VendorDetailsPage({
                 })()}
                 <button
                   onClick={handleInquiryClick}
-                  className="w-full border-2 border-orange-500 text-orange-500 hover:bg-orange-50 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold flex items-center justify-center gap-2 transition-colors"
+                  className="cursor-pointer w-full border-2 border-orange-500 text-orange-500 hover:bg-orange-50 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold flex items-center justify-center gap-2 transition-colors"
                 >
                   <svg
                     className="w-4 h-4 sm:w-5 sm:h-5"

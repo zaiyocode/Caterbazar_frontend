@@ -54,7 +54,7 @@ export default function Navbar() {
           {/* Left Side - Logo and Navigation */}
           <div className="flex items-center space-x-8">
             {/* Logo */}
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="cursor-pointer flex items-center">
               <img
                 src="/images/logo.png"
                 alt="Caterbazar Logo"
@@ -66,19 +66,19 @@ export default function Navbar() {
             <div className="hidden md:flex items-center space-x-8">
               <Link
                 href="/vendors"
-                className="text-white hover:text-orange-300 font-medium transition-colors"
+                className="cursor-pointer text-white hover:text-orange-300 font-medium transition-colors"
               >
                 Vendors
               </Link>
               <Link
                 href="/blog"
-                className="text-white hover:text-orange-300 font-medium transition-colors"
+                className="cursor-pointer text-white hover:text-orange-300 font-medium transition-colors"
               >
                 Blog
               </Link>
               <Link
                 href="/about"
-                className="text-white hover:text-orange-300 font-medium transition-colors"
+                className="cursor-pointer text-white hover:text-orange-300 font-medium transition-colors"
               >
                 About Us
               </Link>
@@ -117,7 +117,7 @@ export default function Navbar() {
                     <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-20">
                       <Link
                         href="/profile"
-                        className="px-4 py-2 text-gray-700 hover:bg-orange-50 transition-colors flex items-center gap-2"
+                        className="cursor-pointer px-4 py-2 text-gray-700 hover:bg-orange-50 transition-colors flex items-center gap-2"
                         onClick={() => setShowProfileMenu(false)}
                       >
                         <User className="w-4 h-4" />
@@ -125,7 +125,7 @@ export default function Navbar() {
                       </Link>
                       <Link
                         href="/my-inquiries"
-                        className="px-4 py-2 text-gray-700 hover:bg-orange-50 transition-colors flex items-center gap-2"
+                        className="cursor-pointer px-4 py-2 text-gray-700 hover:bg-orange-50 transition-colors flex items-center gap-2"
                         onClick={() => setShowProfileMenu(false)}
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -138,7 +138,7 @@ export default function Navbar() {
                           setShowProfileMenu(false);
                           handleLogout();
                         }}
-                        className="w-full text-left px-4 py-2 text-gray-700 hover:bg-orange-50 transition-colors flex items-center gap-2"
+                        className="cursor-pointer w-full text-left px-4 py-2 text-gray-700 hover:bg-orange-50 transition-colors flex items-center gap-2"
                       >
                         <LogOut className="w-4 h-4" />
                         Logout
@@ -151,13 +151,13 @@ export default function Navbar() {
               <>
                 <Link
                   href="/auth"
-                  className="text-white hover:text-orange-300 font-semibold transition-colors"
+                  className="cursor-pointer text-white hover:text-orange-300 font-semibold transition-colors"
                 >
                   Login
                 </Link>
                 <Link
                   href="/auth"
-                  className="px-4 py-2 bg-white text-orange-600 rounded-lg hover:bg-orange-50 font-semibold transition-colors"
+                  className="cursor-pointer px-4 py-2 bg-white text-orange-600 rounded-lg hover:bg-orange-50 font-semibold transition-colors"
                 >
                   Sign Up
                 </Link>
@@ -168,7 +168,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-white hover:text-orange-300"
+            className="cursor-pointer md:hidden text-white hover:text-orange-300"
           >
             {isMenuOpen ? (
               <X className="w-6 h-6" />
@@ -180,26 +180,26 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-white/20">
+          <div className="cursor-pointer md:hidden py-4 border-t border-white/20">
             <div className="flex flex-col space-y-4">
              
               <Link
                 href="/vendors"
-                className="text-white hover:text-orange-300 font-medium transition-colors"
+                className="cursor-pointer text-white hover:text-orange-300 font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Vendors
               </Link>
               <Link
                 href="/blog"
-                className="text-white hover:text-orange-300 font-medium transition-colors"
+                className="cursor-pointer text-white hover:text-orange-300 font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Blog
               </Link>
               <Link
                 href="/about"
-                className="text-white hover:text-orange-300 font-medium transition-colors"
+                className="cursor-pointer text-white hover:text-orange-300 font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About Us
@@ -224,14 +224,14 @@ export default function Navbar() {
                   <>
                     <Link
                       href="/profile"
-                      className="block text-center text-white hover:text-orange-300 font-semibold transition-colors"
+                      className="cursor-pointer block text-center text-white hover:text-orange-300 font-semibold transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       My Profile
                     </Link>
                     <Link
                       href="/my-inquiries"
-                      className="block text-center text-white hover:text-orange-300 font-semibold transition-colors"
+                      className="cursor-pointer block text-center text-white hover:text-orange-300 font-semibold transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       My Activity
@@ -241,7 +241,7 @@ export default function Navbar() {
                         setIsMenuOpen(false);
                         handleLogout();
                       }}
-                      className="w-full text-center text-white hover:text-orange-300 font-semibold transition-colors"
+                      className="cursor-pointer w-full text-center text-white hover:text-orange-300 font-semibold transition-colors"
                     >
                       Logout
                     </button>
@@ -250,14 +250,14 @@ export default function Navbar() {
                   <>
                     <Link
                       href="/auth"
-                      className="block text-center text-white hover:text-orange-300 font-semibold transition-colors"
+                      className="cursor-pointer block text-center text-white hover:text-orange-300 font-semibold transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Login
                     </Link>
                     <Link
                       href="/auth/customer/signup"
-                      className="block text-center px-4 py-2 bg-white text-orange-600 rounded-lg hover:bg-orange-50 font-semibold transition-colors mx-4"
+                      className="cursor-pointer block text-center px-4 py-2 bg-white text-orange-600 rounded-lg hover:bg-orange-50 font-semibold transition-colors mx-4"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Sign Up

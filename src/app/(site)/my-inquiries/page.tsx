@@ -160,7 +160,7 @@ export default function MyInquiriesPage() {
                   setActiveTab('inquiries');
                   setCurrentPage(1);
                 }}
-                className={`flex-1 px-6 py-4 font-semibold transition-colors ${
+                className={`cursor-pointer flex-1 px-6 py-4 font-semibold transition-colors ${
                   activeTab === 'inquiries'
                     ? 'text-orange-600 border-b-2 border-orange-600'
                     : 'text-gray-600 hover:text-orange-600'
@@ -176,7 +176,7 @@ export default function MyInquiriesPage() {
                   setActiveTab('reviews');
                   setCurrentPage(1);
                 }}
-                className={`flex-1 px-6 py-4 font-semibold transition-colors ${
+                className={`cursor-pointer flex-1 px-6 py-4 font-semibold transition-colors ${
                   activeTab === 'reviews'
                     ? 'text-orange-600 border-b-2 border-orange-600'
                     : 'text-gray-600 hover:text-orange-600'
@@ -203,7 +203,7 @@ export default function MyInquiriesPage() {
                         setStatusFilter(status);
                         setCurrentPage(1);
                       }}
-                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                      className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                         statusFilter === status
                           ? 'bg-orange-600 text-white'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -227,7 +227,7 @@ export default function MyInquiriesPage() {
                   <p className="text-gray-500 text-lg">No inquiries found</p>
                   <button
                     onClick={() => router.push('/vendors')}
-                    className="mt-4 px-6 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors"
+                    className="cursor-pointer mt-4 px-6 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors"
                   >
                     Browse Vendors
                   </button>
@@ -290,7 +290,7 @@ export default function MyInquiriesPage() {
                                   setSelectedInquiryForDetails(inquiry);
                                   setDetailsModalOpen(true);
                                 }}
-                                className="px-3 py-1.5 text-xs sm:text-sm bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition-colors whitespace-nowrap"
+                                className="cursor-pointer px-3 py-1.5 text-xs sm:text-sm bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition-colors whitespace-nowrap"
                               >
                                 View Details
                               </button>
@@ -298,7 +298,7 @@ export default function MyInquiriesPage() {
                               {inquiry.status === 'pending' && (
                                 <button
                                   onClick={() => handleCancelInquiry(inquiry._id)}
-                                  className="px-3 py-1.5 text-xs sm:text-sm text-red-600 border border-red-300 rounded-lg hover:bg-red-50 transition-colors"
+                                  className="cursor-pointer px-3 py-1.5 text-xs sm:text-sm text-red-600 border border-red-300 rounded-lg hover:bg-red-50 transition-colors"
                                 >
                                   Cancel
                                 </button>
@@ -307,7 +307,7 @@ export default function MyInquiriesPage() {
                               {(inquiry.status === 'converted' || inquiry.status === 'contacted') && (
                                 <button
                                   onClick={() => handleWriteReview(inquiry)}
-                                  className="px-3 py-1.5 text-xs sm:text-sm text-orange-600 border border-orange-300 rounded-lg hover:bg-orange-50 transition-colors"
+                                  className="cursor-pointer px-3 py-1.5 text-xs sm:text-sm text-orange-600 border border-orange-300 rounded-lg hover:bg-orange-50 transition-colors"
                                 >
                                   Review
                                 </button>
@@ -327,7 +327,7 @@ export default function MyInquiriesPage() {
                   <button
                     onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                     disabled={currentPage === 1}
-                    className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="cursor-pointer px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Previous
                   </button>
@@ -337,7 +337,7 @@ export default function MyInquiriesPage() {
                   <button
                     onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                     disabled={currentPage === totalPages}
-                    className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="cursor-pointer px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Next
                   </button>
@@ -437,7 +437,7 @@ export default function MyInquiriesPage() {
                   <button
                     onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                     disabled={currentPage === 1}
-                    className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="cursor-pointer px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Previous
                   </button>
@@ -447,7 +447,7 @@ export default function MyInquiriesPage() {
                   <button
                     onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                     disabled={currentPage === totalPages}
-                    className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="cursor-pointer px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Next
                   </button>
@@ -473,7 +473,7 @@ export default function MyInquiriesPage() {
                 </div>
                 <button
                   onClick={() => setDetailsModalOpen(false)}
-                  className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
+                  className="cursor-pointer w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -626,7 +626,7 @@ export default function MyInquiriesPage() {
               {/* Close Button */}
               <button
                 onClick={() => setDetailsModalOpen(false)}
-                className="w-full bg-orange-600 hover:bg-orange-700 text-white py-2.5 rounded-lg font-semibold transition-colors"
+                className="cursor-pointer w-full bg-orange-600 hover:bg-orange-700 text-white py-2.5 rounded-lg font-semibold transition-colors"
               >
                 Close
               </button>

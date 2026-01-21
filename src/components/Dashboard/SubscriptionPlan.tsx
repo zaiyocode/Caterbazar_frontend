@@ -111,7 +111,7 @@ export default function SubscriptionPlan() {
             </li>
           </ul>
 
-          <button className="w-full py-3 sm:py-4 bg-green-100 text-green-700 rounded-lg font-semibold text-base sm:text-lg">
+          <button className="cursor-pointer w-full py-3 sm:py-4 bg-green-100 text-green-700 rounded-lg font-semibold text-base sm:text-lg">
             Active Plan
           </button>
         </div>
@@ -128,10 +128,10 @@ export default function SubscriptionPlan() {
           <h3 className="text-2xl sm:text-3xl font-bold text-orange-500 mb-4">Premium</h3>
           <div className="mb-6">
             <div className="flex items-baseline gap-2">
-              <p className="text-lg text-gray-400 line-through">₹17,988</p>
+              <p className="text-lg text-gray-400 line-through">₹12,988</p>
             </div>
             <p className="text-4xl sm:text-5xl font-bold text-gray-900">
-              ₹14,999
+              ₹9,999
               <span className="text-lg text-gray-600 font-normal">/year</span>
             </p>
             <p className="text-sm text-green-600 font-medium mt-1">Save 17% annually</p>
@@ -177,7 +177,7 @@ export default function SubscriptionPlan() {
             </li> */}
           </ul>
 
-          <button className="w-full py-3 sm:py-4 bg-orange-500 text-white rounded-lg font-semibold text-base sm:text-lg hover:bg-orange-600 transition-colors">
+          <button className="w-full py-3 sm:py-4 bg-orange-500 text-white rounded-lg font-semibold text-base sm:text-lg hover:bg-orange-600 transition-colors cursor-pointer">
             Upgrade to Premium
           </button>
         </div>

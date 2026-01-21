@@ -210,7 +210,7 @@ export default function InquiriesManagement() {
                 setSelectedStatus(filter.value);
                 setPagination(prev => ({ ...prev, page: 1 }));
               }}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+              className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 selectedStatus === filter.value
                   ? 'bg-orange-500 text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -275,14 +275,14 @@ export default function InquiriesManagement() {
                 <div className="flex gap-2">
                   <button
                     onClick={() => handleViewDetails(inquiry)}
-                    className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium inline-flex items-center gap-2"
+                    className="cursor-pointer px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium inline-flex items-center gap-2"
                   >
                     <Eye className="w-4 h-4" />
                     View Details
                   </button>
                   <button
                     onClick={() => openResponseModal(inquiry)}
-                    className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors text-sm font-medium inline-flex items-center gap-2"
+                    className="cursor-pointer px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors text-sm font-medium inline-flex items-center gap-2"
                   >
                     <Send className="w-4 h-4" />
                     {inquiry.vendorResponse ? 'Update' : 'Respond'}
@@ -335,7 +335,7 @@ export default function InquiriesManagement() {
           <button
             onClick={() => setPagination(prev => ({ ...prev, page: prev.page - 1 }))}
             disabled={pagination.page === 1}
-            className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="cursor-pointer px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Previous
           </button>
@@ -345,7 +345,7 @@ export default function InquiriesManagement() {
           <button
             onClick={() => setPagination(prev => ({ ...prev, page: prev.page + 1 }))}
             disabled={pagination.page === pagination.pages}
-            className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="cursor-pointer px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Next
           </button>
@@ -360,7 +360,7 @@ export default function InquiriesManagement() {
               <h2 className="text-2xl font-bold text-gray-900">Inquiry Details</h2>
               <button
                 onClick={() => setShowDetailModal(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="cursor-pointer text-gray-400 hover:text-gray-600 transition-colors"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -453,7 +453,7 @@ export default function InquiriesManagement() {
             <div className="p-6 border-t border-gray-200 flex justify-end gap-3 sticky bottom-0 bg-white">
               <button
                 onClick={() => setShowDetailModal(false)}
-                className="px-6 py-2.5 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                className="cursor-pointer px-6 py-2.5 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors"
               >
                 Close
               </button>
@@ -462,7 +462,7 @@ export default function InquiriesManagement() {
                   setShowDetailModal(false);
                   openResponseModal(selectedInquiry);
                 }}
-                className="px-6 py-2.5 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors inline-flex items-center gap-2"
+                className="cursor-pointer px-6 py-2.5 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors inline-flex items-center gap-2"
               >
                 <Send className="w-5 h-5" />
                 {selectedInquiry.vendorResponse ? 'Update Response' : 'Send Response'}
@@ -480,7 +480,7 @@ export default function InquiriesManagement() {
               <h2 className="text-2xl font-bold text-gray-900">Respond to Inquiry</h2>
               <button
                 onClick={() => setShowResponseModal(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="cursor-pointer text-gray-400 hover:text-gray-600 transition-colors"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -524,14 +524,14 @@ export default function InquiriesManagement() {
               <button
                 onClick={() => setShowResponseModal(false)}
                 disabled={responding}
-                className="px-6 py-2.5 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors disabled:opacity-50"
+                className="cursor-pointer px-6 py-2.5 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors disabled:opacity-50"
               >
                 Cancel
               </button>
               <button
                 onClick={handleRespond}
                 disabled={responding}
-                className="px-6 py-2.5 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center gap-2"
+                className="cursor-pointer px-6 py-2.5 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center gap-2"
               >
                 {responding ? (
                   <>

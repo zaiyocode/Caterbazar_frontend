@@ -64,7 +64,7 @@ export default function MobileMenu({ activeTab, onTabChange }: MobileMenuProps) 
                 <button
                   key={item.id}
                   onClick={() => handleTabChange(item.id)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors ${
+                  className={`cursor-pointer w-full flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors ${
                     activeTab === item.id
                       ? 'bg-orange-500 text-white'
                       : 'text-gray-700 hover:bg-gray-100'

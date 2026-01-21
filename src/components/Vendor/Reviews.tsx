@@ -147,7 +147,7 @@ export default function ReviewsSection({ vendorId }: ReviewsSectionProps) {
               <div className="mt-4 flex justify-center">
                 <button
                   onClick={() => setShowAllImages(true)}
-                  className="px-6 py-2.5 border-2 border-orange-500 text-orange-500 rounded-lg font-semibold hover:bg-orange-50 transition-colors text-sm sm:text-base"
+                  className="cursor-pointer px-6 py-2.5 border-2 border-orange-500 text-orange-500 rounded-lg font-semibold hover:bg-orange-50 transition-colors text-sm sm:text-base"
                 >
                   View {highlightImages.length - 5} More Photos
                 </button>
@@ -231,7 +231,7 @@ export default function ReviewsSection({ vendorId }: ReviewsSectionProps) {
                   <button
                     key={star}
                     onClick={() => handleFilterStars(star)}
-                    className={`px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
+                    className={`cursor-pointer px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
                       filterStars === star
                         ? 'bg-orange-500 text-white'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -414,7 +414,7 @@ export default function ReviewsSection({ vendorId }: ReviewsSectionProps) {
             <button 
               onClick={handleLoadMore}
               disabled={loadingMore}
-              className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:border-orange-500 hover:text-orange-500 transition-colors text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mx-auto"
+              className="cursor-pointer w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:border-orange-500 hover:text-orange-500 transition-colors text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mx-auto"
             >
               {loadingMore ? (
                 <>
@@ -435,7 +435,7 @@ export default function ReviewsSection({ vendorId }: ReviewsSectionProps) {
           {/* Close Button */}
           <button
             onClick={() => setSelectedImageIndex(null)}
-            className="absolute top-4 right-4 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors z-10"
+            className="cursor-pointer absolute top-4 right-4 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors z-10"
             aria-label="Close"
           >
             <X className="w-6 h-6 text-white" />
@@ -452,7 +452,7 @@ export default function ReviewsSection({ vendorId }: ReviewsSectionProps) {
               onClick={() => setSelectedImageIndex(prev => 
                 prev === 0 ? highlightImages.length - 1 : prev! - 1
               )}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
+              className="cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
               aria-label="Previous image"
             >
               <ChevronLeft className="w-6 h-6 text-white" />
@@ -483,7 +483,7 @@ export default function ReviewsSection({ vendorId }: ReviewsSectionProps) {
               onClick={() => setSelectedImageIndex(prev => 
                 prev === highlightImages.length - 1 ? 0 : prev! + 1
               )}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
+              className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
               aria-label="Next image"
             >
               <ChevronRight className="w-6 h-6 text-white" />
@@ -498,7 +498,7 @@ export default function ReviewsSection({ vendorId }: ReviewsSectionProps) {
                   <button
                     key={image._id}
                     onClick={() => setSelectedImageIndex(index)}
-                    className={`shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                    className={`cursor-pointer shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden border-2 transition-all ${
                       selectedImageIndex === index
                         ? 'border-orange-500 ring-2 ring-orange-300'
                         : 'border-white/30 hover:border-white/60'

@@ -85,7 +85,7 @@ export default function TopRatedCaterers() {
             <button
               key={type.value}
               onClick={() => setActiveVendorType(type.value)}
-              className={`px-3 sm:px-4 py-1.5 text-xs sm:text-sm rounded-full font-medium whitespace-nowrap transition-all ${
+              className={`cursor-pointer px-3 sm:px-4 py-1.5 text-xs sm:text-sm rounded-full font-medium whitespace-nowrap transition-all ${
                 activeVendorType === type.value
                   ? "bg-orange-500 text-white shadow-lg"
                   : "bg-white/10 text-gray-200 border border-gray-500/50 hover:border-orange-500 hover:bg-white/20"
@@ -96,7 +96,7 @@ export default function TopRatedCaterers() {
           ))}
           <button 
             onClick={() => router.push('/vendors')}
-            className="px-3 sm:px-4 py-1.5 text-xs sm:text-sm rounded-full bg-white text-gray-800 font-medium whitespace-nowrap hover:bg-gray-100 transition-colors flex items-center gap-1 shadow-md"
+            className="cursor-pointer px-3 sm:px-4 py-1.5 text-xs sm:text-sm rounded-full bg-white text-gray-800 font-medium whitespace-nowrap hover:bg-gray-100 transition-colors flex items-center gap-1 shadow-md"
           >
             View all <ArrowRight className="w-3 h-3" />
           </button>
@@ -172,7 +172,7 @@ export default function TopRatedCaterers() {
                           e.stopPropagation();
                           router.push(`/vendors/${vendor?.userId?._id}`);
                         }}
-                        className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg font-semibold transition-all text-xs sm:text-sm whitespace-nowrap shadow-md hover:shadow-lg"
+                        className="cursor-pointer bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg font-semibold transition-all text-xs sm:text-sm whitespace-nowrap shadow-md hover:shadow-lg"
                       >
                         Book Now
                       </button>

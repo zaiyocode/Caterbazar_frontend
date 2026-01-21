@@ -72,7 +72,7 @@ export default function UserForgotPassword() {
           <div className="mb-6 flex items-center gap-2">
             <button
               onClick={() => router.back()}
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-800 transition-colors"
+              className="cursor-pointer flex items-center gap-2 text-gray-600 hover:text-gray-800 transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               <span className="text-sm">Back to Login</span>
@@ -80,7 +80,7 @@ export default function UserForgotPassword() {
             <span className="text-gray-300">|</span>
             <button
               onClick={() => router.push("/")}
-              className="flex items-center gap-2 text-gray-600 hover:text-orange-600 transition-colors"
+              className="cursor-pointer flex items-center gap-2 text-gray-600 hover:text-orange-600 transition-colors"
               aria-label="Go to home"
             >
               <Home className="w-4 h-4" />
@@ -142,7 +142,7 @@ export default function UserForgotPassword() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-orange-500 text-white py-3.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors text-sm disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="cursor-pointer w-full bg-orange-500 text-white py-3.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors text-sm disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {loading ? (
                     <>
@@ -170,7 +170,7 @@ export default function UserForgotPassword() {
                 </p>
                 <button
                   onClick={handleContinue}
-                  className="w-full bg-orange-500 text-white py-3.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors text-sm"
+                  className="cursor-pointer w-full bg-orange-500 text-white py-3.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors text-sm"
                 >
                   Continue to Verify OTP
                 </button>
@@ -184,7 +184,7 @@ export default function UserForgotPassword() {
               Don't have an account?{" "}
               <button
                 onClick={() => router.push("/auth/customer/signup")}
-                className="text-orange-500 hover:text-orange-600 font-semibold"
+                className="cursor-pointer text-orange-500 hover:text-orange-600 font-semibold"
               >
                 Sign Up
               </button>

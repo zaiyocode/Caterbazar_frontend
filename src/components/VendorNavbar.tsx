@@ -111,7 +111,7 @@ export default function VendorNavbar() {
           {/* Left Side - Logo and Navigation */}
           <div className="flex items-center space-x-8">
             {/* Logo */}
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="cursor-pointer flex items-center">
               <img
                 src="/images/logo.png"
                 alt="Caterbazar Logo"
@@ -251,7 +251,7 @@ export default function VendorNavbar() {
                       <button
                         onClick={handleLogout}
                         disabled={isLoggingOut}
-                        className="flex items-center w-full px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                        className="cursor-pointer flex items-center w-full px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium"
                       >
                         <LogOut className="w-4 h-4 mr-3" />
                         {isLoggingOut ? "Logging out..." : "Logout"}
@@ -267,13 +267,13 @@ export default function VendorNavbar() {
               <div className="hidden md:flex items-center gap-4">
                 <Link
                   href="/auth"
-                  className="text-white hover:text-orange-300 font-semibold transition-colors"
+                  className="cursor-pointer text-white hover:text-orange-300 font-semibold transition-colors"
                 >
                   Login
                 </Link>
                 <Link
                   href="/auth"
-                  className="bg-white text-orange-600 px-4 py-2 rounded-lg font-semibold hover:bg-orange-50 transition-colors"
+                  className="cursor-pointer bg-white text-orange-600 px-4 py-2 rounded-lg font-semibold hover:bg-orange-50 transition-colors"
                 >
                   Sign Up
                 </Link>
@@ -283,7 +283,7 @@ export default function VendorNavbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-white hover:text-orange-300"
+              className="cursor-pointer md:hidden text-white hover:text-orange-300"
             >
               {isMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -300,21 +300,21 @@ export default function VendorNavbar() {
             <div className="flex flex-col space-y-4">
               <Link
                 href="/vendors"
-                className="text-white hover:text-orange-300 font-medium transition-colors"
+                className="cursor-pointer text-white hover:text-orange-300 font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Vendors
               </Link>
               <Link
                 href="/photos"
-                className="text-white hover:text-orange-300 font-medium transition-colors"
+                className="cursor-pointer text-white hover:text-orange-300 font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Photos
               </Link>
               <Link
                 href="/blogs"
-                className="text-white hover:text-orange-300 font-medium transition-colors"
+                className="cursor-pointer text-white hover:text-orange-300 font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Blogs
@@ -346,7 +346,7 @@ export default function VendorNavbar() {
                     </div>
                     <Link
                       href="/dashboard"
-                      className="flex items-center gap-2 text-white hover:text-orange-300 font-medium transition-colors px-2"
+                      className="cursor-pointer flex items-center gap-2 text-white hover:text-orange-300 font-medium transition-colors px-2"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <User className="w-4 h-4" />
@@ -357,7 +357,7 @@ export default function VendorNavbar() {
                         handleLogout();
                         setIsMenuOpen(false);
                       }}
-                      className="flex items-center gap-2 text-white hover:text-red-300 font-medium transition-colors px-2 w-full"
+                      className="cursor-pointer flex items-center gap-2 text-white hover:text-red-300 font-medium transition-colors px-2 w-full"
                     >
                       <LogOut className="w-4 h-4" />
                       Logout
@@ -367,14 +367,14 @@ export default function VendorNavbar() {
                   <>
                     <Link
                       href="/auth"
-                      className="block text-center text-white hover:text-orange-300 font-semibold transition-colors"
+                      className="cursor-pointer block text-center text-white hover:text-orange-300 font-semibold transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Login
                     </Link>
                     <Link
                       href="/auth"
-                      className="block text-center bg-white text-orange-600 px-4 py-2 rounded-lg font-semibold hover:bg-orange-50 transition-colors"
+                      className="cursor-pointer block text-center bg-white text-orange-600 px-4 py-2 rounded-lg font-semibold hover:bg-orange-50 transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Sign Up

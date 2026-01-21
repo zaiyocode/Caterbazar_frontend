@@ -364,7 +364,7 @@ export default function CustomerManagement() {
                 <button 
                   onClick={() => handlePageChange(pagination.page - 1)}
                   disabled={pagination.page === 1}
-                  className="px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="cursor-pointer px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Previous
                 </button>
@@ -379,7 +379,7 @@ export default function CustomerManagement() {
                       <button
                         key={page}
                         onClick={() => handlePageChange(page)}
-                        className={`px-3 py-2 rounded-lg text-xs sm:text-sm transition-colors ${
+                        className={`cursor-pointer px-3 py-2 rounded-lg text-xs sm:text-sm transition-colors ${
                           page === pagination.page
                             ? 'bg-orange-500 text-white'
                             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -396,7 +396,7 @@ export default function CustomerManagement() {
                 <button 
                   onClick={() => handlePageChange(pagination.page + 1)}
                   disabled={pagination.page === pagination.pages}
-                  className="px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="cursor-pointer px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Next
                 </button>

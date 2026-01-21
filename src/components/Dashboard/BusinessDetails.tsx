@@ -929,7 +929,7 @@ export default function BusinessDetails() {
                     variant="outline"
                     role="combobox"
                     aria-expanded={teamSizeOpen}
-                    className={`w-full justify-between h-9 sm:h-11 text-sm sm:text-base font-normal text-gray-600 bg-white hover:bg-gray-50 border-gray-300 ${
+                    className={`cursor-pointer w-full justify-between h-9 sm:h-11 text-sm sm:text-base font-normal text-gray-600 bg-white hover:bg-gray-50 border-gray-300 ${
                       validationErrors.teamSize ? "border-red-500" : ""
                     }`}
                   >
@@ -1064,7 +1064,7 @@ export default function BusinessDetails() {
                   variant="outline"
                   role="combobox"
                   aria-expanded={vendorCategoryOpen}
-                  className={`w-full justify-between shadow-none h-9 sm:h-12 text-sm sm:text-base font-normal text-gray-600 bg-gray-50 border-gray-300 ${
+                  className={`cursor-pointer w-full justify-between shadow-none h-9 sm:h-12 text-sm sm:text-base font-normal text-gray-600 bg-gray-50 border-gray-300 ${
                     validationErrors.vendorCategory ? "border-red-500" : ""
                   }`}
                 >
@@ -1161,7 +1161,7 @@ export default function BusinessDetails() {
                     variant="outline"
                     role="combobox"
                     aria-expanded={stateOpen}
-                    className={`w-full justify-between shadow-none h-9 sm:h-12 text-sm sm:text-base font-normal text-gray-600 bg-gray-50 border-gray-300 ${
+                    className={`cursor-pointer w-full justify-between shadow-none h-9 sm:h-12 text-sm sm:text-base font-normal text-gray-600 bg-gray-50 border-gray-300 ${
                       validationErrors.state ? "border-red-500" : ""
                     }`}
                   >
@@ -1234,7 +1234,7 @@ export default function BusinessDetails() {
                     variant="outline"
                     role="combobox"
                     aria-expanded={localityOpen}
-                    className={`w-full justify-between shadow-none h-9 sm:h-12 text-sm sm:text-base font-normal text-gray-600 bg-gray-50 border-gray-300 ${
+                    className={`cursor-pointer w-full justify-between shadow-none h-9 sm:h-12 text-sm sm:text-base font-normal text-gray-600 bg-gray-50 border-gray-300 ${
                       validationErrors.locality ? "border-red-500" : ""
                     }`}
                   >
@@ -1711,7 +1711,7 @@ export default function BusinessDetails() {
                 </div>
                 <button
                   onClick={handleDeleteFSSAI}
-                  className="px-3 py-1.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
+                  className="cursor-pointer px-3 py-1.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
                 >
                   Delete
                 </button>
@@ -1744,7 +1744,7 @@ export default function BusinessDetails() {
                 </div>
                 <button
                   onClick={handleRemovePendingFSSAI}
-                  className="px-3 py-1.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
+                  className="cursor-pointer px-3 py-1.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
                 >
                   Remove
                 </button>
@@ -1990,7 +1990,7 @@ export default function BusinessDetails() {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-orange-500 text-white rounded-lg text-sm sm:text-base font-semibold hover:bg-orange-600 transition-colors disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="cursor-pointer w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-orange-500 text-white rounded-lg text-sm sm:text-base font-semibold hover:bg-orange-600 transition-colors disabled:bg-orange-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {saving ? (
               <>

@@ -178,7 +178,7 @@ export default function VendorDetailSidebar({ vendorId, isOpen, onClose, isAdmin
             <h2 className="text-xl sm:text-2xl font-bold">Vendor Details</h2>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-white/20 rounded-lg transition-colors"
+              className="cursor-pointer p-2 hover:bg-white/20 rounded-lg transition-colors"
             >
               <X className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
@@ -749,7 +749,7 @@ export default function VendorDetailSidebar({ vendorId, isOpen, onClose, isAdmin
                 <button 
                   onClick={handleToggleActive}
                   disabled={actionLoading === 'active'}
-                  className="w-full bg-red-100 text-red-700 py-2.5 sm:py-3 rounded-lg font-semibold text-sm sm:text-base hover:bg-red-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="cursor-pointer w-full bg-red-100 text-red-700 py-2.5 sm:py-3 rounded-lg font-semibold text-sm sm:text-base hover:bg-red-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {actionLoading === 'active' ? (
                     <>
@@ -764,7 +764,7 @@ export default function VendorDetailSidebar({ vendorId, isOpen, onClose, isAdmin
                 <button 
                   onClick={handleToggleActive}
                   disabled={actionLoading === 'active'}
-                  className="w-full bg-green-100 text-green-700 py-2.5 sm:py-3 rounded-lg font-semibold text-sm sm:text-base hover:bg-green-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="cursor-pointer w-full bg-green-100 text-green-700 py-2.5 sm:py-3 rounded-lg font-semibold text-sm sm:text-base hover:bg-green-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {actionLoading === 'active' ? (
                     <>
@@ -780,7 +780,7 @@ export default function VendorDetailSidebar({ vendorId, isOpen, onClose, isAdmin
                 <button 
                   onClick={handleToggleCaterbazarChoice}
                   disabled={actionLoading === 'choice'}
-                  className="w-full bg-gray-100 text-gray-700 py-2.5 sm:py-3 rounded-lg font-semibold text-sm sm:text-base hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="cursor-pointer w-full bg-gray-100 text-gray-700 py-2.5 sm:py-3 rounded-lg font-semibold text-sm sm:text-base hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {actionLoading === 'choice' ? (
                     <>
@@ -795,7 +795,7 @@ export default function VendorDetailSidebar({ vendorId, isOpen, onClose, isAdmin
                 <button 
                   onClick={handleToggleCaterbazarChoice}
                   disabled={actionLoading === 'choice'}
-                  className="w-full bg-yellow-100 text-yellow-700 py-2.5 sm:py-3 rounded-lg font-semibold text-sm sm:text-base hover:bg-yellow-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="cursor-pointer w-full bg-yellow-100 text-yellow-700 py-2.5 sm:py-3 rounded-lg font-semibold text-sm sm:text-base hover:bg-yellow-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {actionLoading === 'choice' ? (
                     <>

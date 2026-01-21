@@ -105,7 +105,7 @@ export default function HeroImageManagement() {
         
         <button 
           onClick={() => setIsUploadModalOpen(true)}
-          className="flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors"
+          className="cursor-pointer flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors"
         >
           <Plus className="w-5 h-5" />
           Add New Image
@@ -124,7 +124,7 @@ export default function HeroImageManagement() {
       <div className="flex gap-2 mb-6">
         <button
           onClick={() => setFilterActive(undefined)}
-          className={`px-4 py-2 rounded-lg transition-colors ${
+          className={`cursor-pointer px-4 py-2 rounded-lg transition-colors ${
             filterActive === undefined
               ? 'bg-orange-500 text-white'
               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -134,7 +134,7 @@ export default function HeroImageManagement() {
         </button>
         <button
           onClick={() => setFilterActive(true)}
-          className={`px-4 py-2 rounded-lg transition-colors ${
+          className={`cursor-pointer px-4 py-2 rounded-lg transition-colors ${
             filterActive === true
               ? 'bg-green-500 text-white'
               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -144,7 +144,7 @@ export default function HeroImageManagement() {
         </button>
         <button
           onClick={() => setFilterActive(false)}
-          className={`px-4 py-2 rounded-lg transition-colors ${
+          className={`cursor-pointer px-4 py-2 rounded-lg transition-colors ${
             filterActive === false
               ? 'bg-gray-500 text-white'
               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -203,7 +203,7 @@ export default function HeroImageManagement() {
           <p className="text-gray-600 mb-4">No hero images found</p>
           <button
             onClick={() => setIsUploadModalOpen(true)}
-            className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors"
+            className="cursor-pointer bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors"
           >
             Upload First Image
           </button>
@@ -224,7 +224,7 @@ export default function HeroImageManagement() {
                   <div className="absolute top-3 right-3 flex items-center gap-2">
                     <button
                       onClick={() => handleToggleStatus(image._id)}
-                      className={`p-1 rounded bg-white bg-opacity-90 hover:bg-opacity-100 transition-all ${
+                      className={`cursor-pointer p-1 rounded bg-white bg-opacity-90 hover:bg-opacity-100 transition-all ${
                         image.isActive ? 'text-green-500' : 'text-gray-500'
                       }`}
                       title={image.isActive ? 'Deactivate' : 'Activate'}
@@ -253,7 +253,7 @@ export default function HeroImageManagement() {
                           setSelectedImage(image);
                           setIsEditModalOpen(true);
                         }}
-                        className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                        className="cursor-pointer p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                         title="Edit"
                       >
                         <Edit className="w-4 h-4" />
@@ -263,7 +263,7 @@ export default function HeroImageManagement() {
                           setSelectedImage(image);
                           setIsDeleteModalOpen(true);
                         }}
-                        className="p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                        className="cursor-pointer p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                         title="Delete"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -297,7 +297,7 @@ export default function HeroImageManagement() {
               <button
                 onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                 disabled={currentPage === 1}
-                className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="cursor-pointer px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Previous
               </button>
@@ -307,7 +307,7 @@ export default function HeroImageManagement() {
               <button
                 onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                 disabled={currentPage === totalPages}
-                className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="cursor-pointer px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Next
               </button>
@@ -446,7 +446,7 @@ function UploadModal({
             <h3 className="text-xl font-bold text-gray-900">Upload Hero Image</h3>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              className="cursor-pointer p-2 hover:bg-gray-100 rounded-lg transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -496,7 +496,7 @@ function UploadModal({
                         setSelectedFile(null);
                         setPreview(null);
                       }}
-                      className="text-sm text-red-600 hover:text-red-700"
+                      className="cursor-pointer text-sm text-red-600 hover:text-red-700"
                     >
                       Remove Image
                     </button>
@@ -533,7 +533,7 @@ function UploadModal({
               <button
                 type="button"
                 onClick={onClose}
-                className="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                className="cursor-pointer px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
                 disabled={uploading}
               >
                 Cancel
@@ -541,7 +541,7 @@ function UploadModal({
               <button
                 type="submit"
                 disabled={uploading || !title || !selectedFile}
-                className="px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+                className="cursor-pointer px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
               >
                 {uploading ? (
                   <>
@@ -657,7 +657,7 @@ function EditModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <div className="fixed inset-0 bg-black/20 bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="p-6">
           {/* Header */}

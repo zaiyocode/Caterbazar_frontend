@@ -83,7 +83,7 @@ export default function WhyChooseCaterbazar() {
                 {/* Learn More Button */}
                 <button 
                   onClick={() => router.push("/about")}
-                  className="px-4 sm:px-6 py-2 text-orange-500 text-xs sm:text-sm font-semibold rounded-lg hover:bg-orange-200 cursor-pointer transition-colors"
+                  className="cursor-pointer px-4 sm:px-6 py-2 text-orange-500 text-xs sm:text-sm font-semibold rounded-lg hover:bg-orange-200 cursor-pointer transition-colors"
                 >
                   Learn More
                 </button>
