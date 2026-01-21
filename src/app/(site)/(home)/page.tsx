@@ -9,6 +9,9 @@ import WhyChooseCaterbazar from "@/components/Home/WhyChooseCaterbazar";
 import TrustSection from "@/components/Home/TrustSection";
 import CateringProfessionalCTA from "@/components/Home/CateringProfessionalCTA";
 
+// Note: Metadata export doesn't work in client components
+// The metadata is already defined in the root layout.tsx
+
 function OAuthCallbackHandler() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -55,7 +58,7 @@ function OAuthCallbackHandler() {
 
 const page = () => {
   return (
-    <>
+    <main role="main">
       <Suspense fallback={null}>
         <OAuthCallbackHandler />
       </Suspense>
@@ -65,7 +68,7 @@ const page = () => {
       <WhyChooseCaterbazar />
       <TrustSection />
       <CateringProfessionalCTA />
-    </>
+    </main>
   );
 };
 

@@ -4,17 +4,21 @@ import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react
 
 export default function Footer() {
   return (
-    <footer className="bg-red-950 rounded-t-4xl text-gray-300">
+    <footer className="bg-red-950 rounded-t-4xl text-gray-300" role="contentinfo">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Left Section - Logo and Contact Info */}
           <div className="text-center md:text-left">
             <div className="mb-6">
-              <img
-                src="/images/logo.png"
-                alt="Caterbazar Logo"
-                className="h-12 w-auto mx-auto md:mx-0"
-              />
+              <Link href="/">
+                <img
+                  src="/images/logo.png"
+                  alt="Cater Bazar - India's Leading Catering Marketplace"
+                  className="h-12 w-auto mx-auto md:mx-0"
+                  width="200"
+                  height="48"
+                />
+              </Link>
             </div>
             <div className="space-y-3">
               <div className="flex items-center justify-center md:justify-start gap-3">
@@ -72,7 +76,8 @@ export default function Footer() {
           {/* Right Section - Social Media */}
           <div className="text-center md:text-right">
             <h3 className="text-white font-semibold text-lg mb-6 cursor-pointer">Follow Us</h3>
-            <div className="flex justify-center md:justify-end gap-6">
+            <nav aria-label="Social Media Links">
+              <div className="flex justify-center md:justify-end gap-6">
               <a
                 href="https://www.facebook.com/share/1FqiW3bKau/"
                 target="_blank"
@@ -109,7 +114,8 @@ export default function Footer() {
               >
                 <Linkedin className="w-6 h-6" />
               </a>
-            </div>
+              </div>
+            </nav>
           </div>
         </div>
 

@@ -48,17 +48,19 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-orange-600  sticky top-0 z-50">
+    <nav className="bg-orange-600  sticky top-0 z-50" role="navigation" aria-label="Main Navigation">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Left Side - Logo and Navigation */}
           <div className="flex items-center space-x-8">
             {/* Logo */}
-            <Link href="/" className="cursor-pointer flex items-center">
+            <Link href="/" className="cursor-pointer flex items-center" aria-label="Cater Bazar Home">
               <img
                 src="/images/logo.png"
-                alt="Caterbazar Logo"
+                alt="Cater Bazar - Find Top Caterers in India"
                 className="h-10 w-auto filter brightness-0 invert"
+                width="120"
+                height="40"
               />
             </Link>
 
