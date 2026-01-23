@@ -71,51 +71,64 @@ export default function CaterersSection() {
             <Loader2 className="w-12 h-12 animate-spin text-orange-500" />
           </div>
         ) : vendors.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {vendors.slice(0, 4).map((vendor, index) => (
-              <div
-                key={vendor?.userId?._id}
-                onClick={() => router.push(`/vendors/${vendor?.userId?._id}`)}
-                className="group overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer rounded-xl"
-              >
-                <div className="relative h-36 sm:h-40 md:h-48 overflow-hidden">
-                  <img
-                    src={getVendorImage(vendor)}
-                    alt={vendor.userId.fullName}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                  {vendor.isCaterbazarChoice && (
-                    <div className="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
-                      Top Choice
-                    </div>
-                  )}
-                </div>
+          <div className="grid lg:grid-cols-2 gap-4 sm:gap-6">
+            {/* Left Column - 4 Cards */}
+            <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-6 items-start">
+              {vendors.slice(0, 4).map((vendor, index) => (
+                <div
+                  key={vendor?.userId?._id}
+                  onClick={() => router.push(`/vendors/${vendor?.userId?._id}`)}
+                  className="group overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer rounded-xl"
+                >
+                  <div className="relative h-36 sm:h-40 md:h-48 overflow-hidden">
+                    <img
+                      src={getVendorImage(vendor)}
+                      alt={vendor.userId.fullName}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                    {vendor.isCaterbazarChoice && (
+                      <div className="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
+                        Top Choice
+                      </div>
+                    )}
+                  </div>
 
-                <div className="p-3 sm:p-4 lg:p-5 bg-white">
-                  <div className="flex items-center justify-between mb-1.5 sm:mb-2">
-                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 truncate">
-                      {vendor.businessRegistrationId?.brandName || vendor.userId.fullName}
-                    </h3>
-                    <button className="cursor-pointer w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-full border-2 border-gray-300 flex items-center justify-center group-hover:border-orange-500 group-hover:bg-orange-500 transition-all shrink-0">
-                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 group-hover:text-white transition-colors" />
-                    </button>
-                  </div>
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-1.5 text-gray-600">
-                      <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                      <span className="text-xs sm:text-sm truncate">{vendor.address.locality}</span>
+                  <div className="p-3 sm:p-4 lg:p-5 bg-white">
+                    <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+                      <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 truncate">
+                        {vendor.businessRegistrationId?.brandName || vendor.userId.fullName}
+                      </h3>
+                      <button className="cursor-pointer w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-full border-2 border-gray-300 flex items-center justify-center group-hover:border-orange-500 group-hover:bg-orange-500 transition-all shrink-0">
+                        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 group-hover:text-white transition-colors" />
+                      </button>
                     </div>
-                    <div className="flex items-center gap-1.5 text-gray-600">
-                      <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400" />
-                      <span className="text-xs sm:text-sm">
-                        {vendor.stats.averageRating.toFixed(1)} ({vendor.stats.totalReviews} reviews)
-                      </span>
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-1.5 text-gray-600">
+                        <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                        <span className="text-xs sm:text-sm truncate">{vendor.address.locality}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 text-gray-600">
+                        <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400" />
+                        <span className="text-xs sm:text-sm">
+                          {vendor.stats.averageRating.toFixed(1)} ({vendor.stats.totalReviews} reviews)
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Right Column - Large Image */}
+            <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl h-64 sm:h-80 lg:min-h-[630px]">
+              <img
+                src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                alt="Buffet spread"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            </div>
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center py-12 sm:py-16 lg:py-20">
