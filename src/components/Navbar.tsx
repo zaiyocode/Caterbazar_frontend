@@ -158,7 +158,7 @@ export default function Navbar() {
                   Login
                 </Link>
                 <Link
-                  href="/auth"
+                  href="/auth/signup"
                   className="cursor-pointer px-4 py-2 bg-white text-orange-600 rounded-lg hover:bg-orange-50 font-semibold transition-colors"
                 >
                   Sign Up
