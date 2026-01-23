@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Cater Bazar – Find Top Caterers in India | Compare Menus & Book Online",
-  description: "Find verified caterers across India with Cater Bazar. Compare menus, pricing, cuisines, and services for weddings, corporate events, parties, and more. Book best caterers with best prices & reviews.",
+  title: "Find Best Catering Services in India | Cater Bazar",
+  description: "Cater Bazar helps you find the best caterers in India. Compare menus, prices, cuisines, and reviews. Book trusted Catering Services for every event.",
   keywords: [
     "caterers in India",
     "wedding caterers",
@@ -47,8 +47,8 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://www.caterbazar.com",
     siteName: "Cater Bazar",
-    title: "Cater Bazar – Find Top Caterers in India | Compare Menus & Book Online",
-    description: "Find verified caterers across India with Cater Bazar. Compare menus, pricing, cuisines, and services for weddings, corporate events, parties, and more. Book best caterers with best prices & reviews.",
+    title: "Find Best Catering Services in India | Cater Bazar",
+    description: "Cater Bazar helps you find the best caterers in India. Compare menus, prices, cuisines, and reviews. Book trusted Catering Services for every event.",
     images: [
       {
         url: "/images/logo.png",
@@ -60,8 +60,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cater Bazar – Find Top Caterers in India | Compare Menus & Book Online",
-    description: "Find verified caterers across India with Cater Bazar. Compare menus, pricing, cuisines, and services for weddings, corporate events, parties, and more.",
+    title: "Find Best Catering Services in India | Cater Bazar",
+    description: "Cater Bazar helps you find the best caterers in India. Compare menus, prices, cuisines, and reviews. Book trusted Catering Services for every event.",
     images: ["/images/logo.png"],
     creator: "@caterbazar",
     site: "@caterbazar",
@@ -78,9 +78,15 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/images/logo.png",
-    shortcut: "/images/logo.png",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
     apple: "/images/logo.png",
+    other: [
+      {
+        rel: "icon",
+        url: "/favicon.ico",
+      },
+    ],
   },
 };
 

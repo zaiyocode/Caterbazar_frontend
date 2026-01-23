@@ -134,7 +134,7 @@ export default function HeroSection() {
 
   const words = [
     {
-      text: "One",
+      text: "Cater",
       className: "text-orange-500",
     },
     {
@@ -165,11 +165,11 @@ export default function HeroSection() {
             {/* Heading */}
             <div>
               <div className="mb-3 sm:mb-4">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                  India’s 1st Cater Bazar - Top Caters{" "}
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+                  India's 1st Catering Marketplace – Find Top Caterers |{" "}
                   <TypewriterEffect
                     words={words}
-                    className="inline text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold"
+                    className="inline text-2xl sm:text-3xl md:text-4xl font-bold"
                   />
                 </h1>
               </div>
