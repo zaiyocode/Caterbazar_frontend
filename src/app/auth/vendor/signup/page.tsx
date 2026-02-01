@@ -94,7 +94,29 @@ export default function VendorSignup() {
         setStep(2);
       }
     } catch (err: any) {
-      setError(err.message || 'Signup failed. Please try again.');
+      const errorMessage = err.message || 'Signup failed. Please try again.';
+      const lowerCaseMessage = errorMessage.toLowerCase();
+      
+      // Check if email already exists but is not verified
+      if (
+        lowerCaseMessage.includes("email already exists") ||
+        lowerCaseMessage.includes("email is already registered") ||
+        lowerCaseMessage.includes("already registered") ||
+        lowerCaseMessage.includes("user already exists") ||
+        lowerCaseMessage.includes("account already exists") ||
+        lowerCaseMessage.includes("pending_verification") ||
+        lowerCaseMessage.includes("pending verification") ||
+        lowerCaseMessage.includes("not verified") ||
+        lowerCaseMessage.includes("email exists") ||
+        lowerCaseMessage.includes("duplicate") ||
+        lowerCaseMessage.includes("already exist")
+      ) {
+        // Redirect to verify-otp page with email
+        router.push(`/auth/vendor/verify-otp?email=${encodeURIComponent(email)}`);
+        return;
+      }
+      
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
