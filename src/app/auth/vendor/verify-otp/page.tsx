@@ -19,8 +19,17 @@ function VerifyOTPContent() {
   useEffect(() => {
     // Check if email is passed via URL params
     const emailParam = searchParams.get("email");
+    const otpSentParam = searchParams.get("otpSent");
+    
     if (emailParam) {
       setEmail(emailParam);
+      
+      // If OTP was already sent (from login attempt), skip to OTP step
+      if (otpSentParam === "true") {
+        setStep("otp");
+        setTimer(600); // 10 minutes as per API response
+        setSuccess("OTP has been sent to your email. Please verify.");
+      }
     }
   }, [searchParams]);
 
@@ -262,7 +271,7 @@ function VerifyOTPContent() {
                 </button>
               </div>
 
-              <p className="mt-6 text-center text-sm text-gray-600">
+              {/* <p className="mt-6 text-center text-sm text-gray-600">
                 Remember your password?{" "}
                 <button
                   onClick={() => router.push("/auth/vendor/signin")}
@@ -270,7 +279,7 @@ function VerifyOTPContent() {
                 >
                   Sign In
                 </button>
-              </p>
+              </p> */}
 
               <p className="mt-3 text-center text-sm text-gray-600">
                 Don&apos;t have an account?{" "}

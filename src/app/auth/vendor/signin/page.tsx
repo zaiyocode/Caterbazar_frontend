@@ -33,7 +33,27 @@ export default function VendorSignin() {
         router.push("/dashboard");
       }
     } catch (err: any) {
-      setError(err.message || "Login failed. Please try again.");
+      // Check if email is not verified (requiresOTP)
+      if (err.data?.requiresOTP || err.requiresOTP) {
+        // API already sent OTP, redirect to verify-otp page
+        const userEmail = err.data?.email || email;
+        router.push(`/auth/vendor/verify-otp?email=${encodeURIComponent(userEmail)}&otpSent=true`);
+        return;
+      }
+      
+      // Check for email not verified message
+      const errorMessage = err.message || "Login failed. Please try again.";
+      if (
+        errorMessage.toLowerCase().includes("email not verified") ||
+        errorMessage.toLowerCase().includes("not verified") ||
+        errorMessage.toLowerCase().includes("pending verification") ||
+        errorMessage.toLowerCase().includes("verify your email")
+      ) {
+        router.push(`/auth/vendor/verify-otp?email=${encodeURIComponent(email)}&otpSent=true`);
+        return;
+      }
+      
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
