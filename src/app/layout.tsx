@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     description: "Cater Bazar helps you find the best caterers in India. Compare menus, prices, cuisines, and reviews. Book trusted Catering Services for every event.",
     images: [
       {
-        url: "/images/logo.png",
+        url: "/images/fav-log.jpeg",
         width: 1200,
         height: 630,
         alt: "Cater Bazar - Find Top Caterers in India",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Find Best Catering Services in India | Cater Bazar",
     description: "Cater Bazar helps you find the best caterers in India. Compare menus, prices, cuisines, and reviews. Book trusted Catering Services for every event.",
-    images: ["/images/logo.png"],
+    images: ["/images/fav-log.jpeg"],
     creator: "@caterbazar",
     site: "@caterbazar",
   },
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/images/logo.png",
+    apple: "/images/fav-log.jpeg",
     other: [
       {
         rel: "icon",
