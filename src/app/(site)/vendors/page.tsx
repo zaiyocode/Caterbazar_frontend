@@ -292,6 +292,11 @@ function SearchResultsContent() {
     }
   };
 
+  // Filter vendors with valid address data
+  const filteredVendors = vendors.filter(
+    (vendor) => vendor.address && vendor.address.locality
+  );
+
   return (
     <div className="min-h-screen bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-4 sm:py-8">
@@ -1192,7 +1197,7 @@ function SearchResultsContent() {
                 <p className="text-xs sm:text-sm text-gray-600">
                   {loading
                     ? "Loading..."
-                    : `${pagination.total} caterers found`}
+                    : `${filteredVendors.length} caterers found`}
                 </p>
               </div>
               {pagination.pages > 1 && (
@@ -1211,7 +1216,7 @@ function SearchResultsContent() {
             )}
 
             {/* Empty State */}
-            {!loading && vendors.length === 0 && (
+            {!loading && filteredVendors.length === 0 && (
               <div className="text-center py-12">
                 <p className="text-gray-500">
                   No vendors found. Try adjusting your filters.
@@ -1220,9 +1225,9 @@ function SearchResultsContent() {
             )}
 
             {/* Results Grid */}
-            {!loading && vendors.length > 0 && (
+            {!loading && filteredVendors.length > 0 && (
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
-                {vendors.map((vendor, index) => {
+                {filteredVendors.map((vendor, index) => {
                   // Get setup image from gallery or fallback to profile photo
                   const setupImage = vendor.gallery?.find(
                     (img) => img.category === "setup"
@@ -1231,11 +1236,6 @@ function SearchResultsContent() {
                     setupImage?.url ||
                     vendor.profilePhoto ||
                     "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png";
-
-                  // Skip vendor if address is not available
-                  if (!vendor.address || !vendor.address.locality) {
-                    return null;
-                  }
 
                   return (
                     <div

@@ -10,6 +10,11 @@ export default function CaterersSection() {
   const [vendors, setVendors] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // Filter vendors with valid address data
+  const filteredVendors = vendors.filter(
+    (vendor) => vendor.address && vendor.address.locality
+  );
+
   useEffect(() => {
     fetchVendors();
   }, []);
@@ -70,11 +75,11 @@ export default function CaterersSection() {
           <div className="flex items-center justify-center h-64">
             <Loader2 className="w-12 h-12 animate-spin text-orange-500" />
           </div>
-        ) : vendors.length > 0 ? (
+        ) : filteredVendors.length > 0 ? (
           <div className="grid lg:grid-cols-2 gap-4 sm:gap-6">
             {/* Left Column - 4 Cards */}
             <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-6 items-start">
-              {vendors.slice(0, 4).map((vendor, index) => (
+              {filteredVendors.slice(0, 4).map((vendor, index) => (
                 <div
                   key={vendor?.userId?._id}
                   onClick={() => router.push(`/vendors/${vendor?.userId?._id}`)}
