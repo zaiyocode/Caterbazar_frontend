@@ -15,14 +15,28 @@ const VendorsSearchPage = dynamic(() => import('../page'), { ssr: false });
 const Page = () => {
   const params = useParams();
   const router = useRouter();
-  const vendorId = params.id as string;
+  const slug = params.slug as string[];
   
-  // Check if this is a locality search URL pattern
-  const isLocalityPattern = vendorId && vendorId.startsWith('catering-services-in-');
+  // Determine URL pattern and extract vendor ID
+  let vendorId: string;
+  let isLocalityPattern = false;
   
-  // Check if this is the new SEO-friendly vendor URL pattern (locality/category/brandname/id)
-  // The id will be the actual MongoDB ID (24 character hex string)
-  const isNewVendorPattern = vendorId && vendorId.length === 24 && /^[0-9a-f]{24}$/i.test(vendorId);
+  if (slug.length === 1) {
+    // Single segment: either /vendors/{id} or /vendors/catering-services-in-{city}
+    const segment = slug[0];
+    if (segment.startsWith('catering-services-in-')) {
+      isLocalityPattern = true;
+      vendorId = '';
+    } else {
+      vendorId = segment;
+    }
+  } else if (slug.length === 4) {
+    // New SEO format: /vendors/{locality}/{category}/{brandname}/{id}
+    vendorId = slug[3]; // Last segment is the ID
+  } else {
+    // Invalid URL format
+    vendorId = '';
+  }
   
   const [vendorData, setVendorData] = useState<VendorProfileData | null>(null);
   const [setupImages, setSetupImages] = useState<GalleryImage[]>([]);
@@ -34,8 +48,6 @@ const Page = () => {
     if (isLocalityPattern) return;
     
     const fetchVendorData = async () => {
-      // For new pattern, vendorId is already the actual ID
-      // For new SEO URLs, the actual ID is in params.id
       if (!vendorId) return;
       
       setLoading(true);

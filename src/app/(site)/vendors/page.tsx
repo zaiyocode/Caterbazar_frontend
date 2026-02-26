@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect, Suspense, useRef } from "react";
 import {
   ChevronDown,
   Search,
@@ -73,6 +73,70 @@ function SearchResultsContent() {
     pages: 1,
   });
 
+  // Track if component has mounted to prevent initial URL update
+  const isInitialMount = useRef(true);
+  const hasInitialized = useRef(false);
+
+  // Initialize from URL pathname and query params on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !hasInitialized.current) {
+      hasInitialized.current = true;
+      const pathname = window.location.pathname;
+      const urlParams = new URLSearchParams(window.location.search);
+      
+      // Extract locality from pathname
+      const localityMatch = pathname.match(/\/vendors\/catering-services-in-([a-z0-9-]+)/);
+      
+      if (localityMatch) {
+        // Convert kebab-case to Title Case with special handling
+        const locality = localityMatch[1]
+          .split('-')
+          .map(word => {
+            // Handle special cases
+            if (word.toLowerCase() === 'ncr') return 'NCR';
+            // Standard title case for other words
+            return word.charAt(0).toUpperCase() + word.slice(1);
+          })
+          .join(' ');
+        setSelectedLocality(locality);
+      }
+      
+      // Initialize all filters from URL query parameters
+      const vendorCategory = urlParams.get('vendorCategory');
+      const state = urlParams.get('state');
+      const foodPref = urlParams.get('foodPreference');
+      const minGuestsParam = urlParams.get('minGuests');
+      const maxGuestsParam = urlParams.get('maxGuests');
+      const vegMinParam = urlParams.get('vegPriceMin');
+      const vegMaxParam = urlParams.get('vegPriceMax');
+      const nonVegMinParam = urlParams.get('nonVegPriceMin');
+      const nonVegMaxParam = urlParams.get('nonVegPriceMax');
+      const minRatingParam = urlParams.get('minRating');
+      const caterbazarChoiceParam = urlParams.get('caterbazarChoice');
+      const sortByParam = urlParams.get('sortBy');
+      const searchQueryParam = urlParams.get('searchQuery');
+      
+      if (vendorCategory) setVendorType(vendorCategory);
+      if (state) setSelectedState(state);
+      if (foodPref) setFoodPreference(foodPref as "veg" | "non-veg" | "both");
+      if (minGuestsParam) setMinGuests(parseInt(minGuestsParam));
+      if (maxGuestsParam) setMaxGuests(parseInt(maxGuestsParam));
+      if (vegMinParam) setVegPriceMin(parseInt(vegMinParam));
+      if (vegMaxParam) setVegPriceMax(parseInt(vegMaxParam));
+      if (nonVegMinParam) setNonVegPriceMin(parseInt(nonVegMinParam));
+      if (nonVegMaxParam) setNonVegPriceMax(parseInt(nonVegMaxParam));
+      if (minRatingParam) setMinRating(parseInt(minRatingParam));
+      if (caterbazarChoiceParam === 'true') setShowCaterbazarChoice(true);
+      if (sortByParam) setSortBy(sortByParam);
+      if (searchQueryParam) setSearchQuery(searchQueryParam);
+      
+      // Mark initialization complete after a short delay to allow state updates
+      setTimeout(() => {
+        isInitialMount.current = false;
+      }, 100);
+    }
+  }, []);
+
   // Fetch vendors with all filters
   useEffect(() => {
     const fetchVendors = async () => {
@@ -83,17 +147,54 @@ function SearchResultsContent() {
           limit: 20,
         };
 
+        // Extract locality from pathname if present
+        let localityFromPath = '';
+        if (typeof window !== 'undefined') {
+          const pathname = window.location.pathname;
+          const localityMatch = pathname.match(/\/vendors\/catering-services-in-([a-z0-9-]+)/);
+          
+          if (localityMatch) {
+            localityFromPath = localityMatch[1]
+              .split('-')
+              .map(word => {
+                if (word.toLowerCase() === 'ncr') return 'NCR';
+                return word.charAt(0).toUpperCase() + word.slice(1);
+              })
+              .join(' ');
+          }
+        }
+
         // Get initial query parameters from URL
         const urlVendorCategory = searchParams.get("vendorCategory");
         const urlLocality = searchParams.get("locality");
         const urlState = searchParams.get("state");
         const urlCaterbazarChoice = searchParams.get("caterbazarChoice");
 
-        // Apply all filters
+        // Convert URL locality from kebab-case to proper format for API
+        let formattedUrlLocality = urlLocality;
+        if (urlLocality) {
+          formattedUrlLocality = urlLocality
+            .split('-')
+            .map(word => {
+              if (word.toLowerCase() === 'ncr') return 'NCR';
+              return word.charAt(0).toUpperCase() + word.slice(1);
+            })
+            .join(' ');
+        }
+
+        // Apply all filters - prioritize pathname locality over state and query params
         if (vendorType || urlVendorCategory)
           params.vendorCategory = vendorType || urlVendorCategory;
         if (selectedState || urlState) params.state = selectedState || urlState;
-        if (selectedLocality || urlLocality) params.locality = selectedLocality || urlLocality;
+        
+        // Use locality from pathname first, then state, then query param
+        if (localityFromPath) {
+          params.locality = localityFromPath;
+        } else if (selectedLocality) {
+          params.locality = selectedLocality;
+        } else if (formattedUrlLocality) {
+          params.locality = formattedUrlLocality;
+        }
         if (minGuests) params.minGuests = minGuests;
         if (maxGuests) params.maxGuests = maxGuests;
         if (vegPriceMin) params.vegPriceMin = vegPriceMin;
@@ -117,7 +218,14 @@ function SearchResultsContent() {
           if (urlVendorCategory && !vendorType)
             setVendorType(urlVendorCategory);
           if (urlState && !selectedState) setSelectedState(urlState);
-          if (urlLocality && !selectedLocality) setSelectedLocality(urlLocality);
+          
+          // Set selectedLocality from pathname or query params
+          if (localityFromPath && !selectedLocality) {
+            setSelectedLocality(localityFromPath);
+          } else if (formattedUrlLocality && !selectedLocality) {
+            setSelectedLocality(formattedUrlLocality);
+          }
+          
           if (urlCaterbazarChoice === "true") setShowCaterbazarChoice(true);
         }
       } catch (error) {
@@ -146,6 +254,67 @@ function SearchResultsContent() {
     pagination.page,
   ]);
 
+  // Update URL with all filter parameters
+  useEffect(() => {
+    // Skip URL update on initial mount (filters are being initialized from URL)
+    if (isInitialMount.current) {
+      return;
+    }
+    
+    const params = new URLSearchParams();
+    
+    // Add all active filters to URL params
+    if (vendorType) params.set('vendorCategory', vendorType);
+    if (selectedState) params.set('state', selectedState);
+    if (foodPreference) params.set('foodPreference', foodPreference);
+    if (minGuests) params.set('minGuests', String(minGuests));
+    if (maxGuests) params.set('maxGuests', String(maxGuests));
+    if (vegPriceMin) params.set('vegPriceMin', String(vegPriceMin));
+    if (vegPriceMax) params.set('vegPriceMax', String(vegPriceMax));
+    if (nonVegPriceMin) params.set('nonVegPriceMin', String(nonVegPriceMin));
+    if (nonVegPriceMax) params.set('nonVegPriceMax', String(nonVegPriceMax));
+    if (minRating) params.set('minRating', String(minRating));
+    if (showCaterbazarChoice) params.set('caterbazarChoice', 'true');
+    if (sortBy && sortBy !== 'popularity') params.set('sortBy', sortBy);
+    if (searchQuery) params.set('searchQuery', searchQuery);
+    
+    const queryString = params.toString();
+    
+    // Determine the base URL path
+    let basePath = '/vendors';
+    if (selectedLocality) {
+      const formattedLocality = selectedLocality.toLowerCase().replace(/\s+/g, '-');
+      basePath = `/vendors/catering-services-in-${formattedLocality}`;
+    }
+    
+    // Construct the full URL
+    const newUrl = queryString ? `${basePath}?${queryString}` : basePath;
+    
+    // Only update if URL has changed to prevent unnecessary navigation
+    if (typeof window !== 'undefined') {
+      const currentPath = window.location.pathname + window.location.search;
+      if (currentPath !== newUrl) {
+        router.push(newUrl, { scroll: false });
+      }
+    }
+  }, [
+    vendorType,
+    selectedState,
+    selectedLocality,
+    foodPreference,
+    minGuests,
+    maxGuests,
+    vegPriceMin,
+    vegPriceMax,
+    nonVegPriceMin,
+    nonVegPriceMax,
+    minRating,
+    showCaterbazarChoice,
+    sortBy,
+    searchQuery,
+    router,
+  ]);
+
   const handleResetFilters = () => {
     setVendorType("");
     setSelectedState("");
@@ -161,6 +330,7 @@ function SearchResultsContent() {
     setShowCaterbazarChoice(false);
     setSearchQuery("");
     setSortBy("popularity");
+    router.push("/vendors");
   };
 
   const sortByOptions = [
@@ -438,25 +608,6 @@ function SearchResultsContent() {
                 </div>
               </div>
 
-              {/* Locality */}
-              {/* <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-3">
-                  State
-                </label>
-                <div className="relative">
-                  <select
-                    value={selectedState}
-                    onChange={(e) => setSelectedState(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none text-sm appearance-none bg-white"
-                  >
-                    <option value="">All States</option>
-                    {states.map((state) => (
-                      <option key={state} value={state}>{state}</option>
-                    ))}
-                  </select>
-                  <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 pointer-events-none" />
-                </div>
-              </div> */}
 
               <div>
                 <label className="block text-sm font-semibold text-gray-900 mb-3">
@@ -487,7 +638,11 @@ function SearchResultsContent() {
                               key={loc.value}
                               value={loc.value}
                               onSelect={(currentValue) => {
-                                setSelectedLocality(currentValue === selectedLocality ? "" : currentValue)
+                                // Find the actual locality value (Command normalizes to lowercase)
+                                const actualLocality = localities.find(
+                                  (l) => l.value.toLowerCase() === currentValue.toLowerCase()
+                                )?.value || currentValue;
+                                setSelectedLocality(actualLocality === selectedLocality ? "" : actualLocality)
                                 setLocalityOpen(false)
                               }}
                             >
@@ -917,7 +1072,11 @@ function SearchResultsContent() {
                                   key={loc.value}
                                   value={loc.value}
                                   onSelect={(currentValue) => {
-                                    setSelectedLocality(currentValue === selectedLocality ? "" : currentValue)
+                                    // Find the actual locality value (Command normalizes to lowercase)
+                                    const actualLocality = localities.find(
+                                      (l) => l.value.toLowerCase() === currentValue.toLowerCase()
+                                    )?.value || currentValue;
+                                    setSelectedLocality(actualLocality === selectedLocality ? "" : actualLocality)
                                     setMobileLocalityOpen(false)
                                   }}
                                 >
@@ -1240,7 +1399,15 @@ function SearchResultsContent() {
                   return (
                     <div
                       key={vendor?.userId?._id}
-                      className="p-4 rounded-lg overflow-hidden border border-gray-200 hover:shadow-sm transition-shadow"
+                      onClick={() => {
+                        // Create SEO-friendly URL with locality/category/brandname/id
+                        const locality = vendor.address.locality.toLowerCase().replace(/\s+/g, '-');
+                        const category = vendor.capacity.vendorCategory.toLowerCase().replace(/\s+/g, '-');
+                        const brandName = vendor.businessRegistrationId?.brandName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+                        const vendorId = vendor?.userId?._id;
+                        router.push(`/vendors/${locality}/${category}/${brandName}/${vendorId}`);
+                      }}
+                      className="p-4 rounded-lg overflow-hidden border border-gray-200 hover:shadow-sm transition-shadow cursor-pointer"
                     >
                       {/* Image */}
                       <div className="relative h-36 sm:h-40 ">
@@ -1303,9 +1470,15 @@ function SearchResultsContent() {
                             </p>
                           </div>
                           <button
-                            onClick={() =>
-                              router.push(`/vendors/${vendor?.userId?._id}`)
-                            }
+                            onClick={(e) => {
+                              e.stopPropagation(); // Prevent card click
+                              // Create SEO-friendly URL with locality/category/brandname/id
+                              const locality = vendor.address.locality.toLowerCase().replace(/\s+/g, '-');
+                              const category = vendor.capacity.vendorCategory.toLowerCase().replace(/\s+/g, '-');
+                              const brandName = vendor.businessRegistrationId?.brandName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+                              const vendorId = vendor?.userId?._id;
+                              router.push(`/vendors/${locality}/${category}/${brandName}/${vendorId}`);
+                            }}
                             className="cursor-pointer px-4 sm:px-6 py-1.5 sm:py-2 border border-orange-500 text-orange-500 rounded-full font-semibold hover:bg-orange-500 hover:text-white transition-colors text-xs sm:text-sm whitespace-nowrap"
                           >
                             Book now

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useRef } from "react";
-import { useRouter } from "next/navigation";
 import { ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
 
 interface CitiesCarouselProps {
@@ -14,7 +13,6 @@ export default function CitiesCarousel({
   onLocalityChange,
 }: CitiesCarouselProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
 
   const scrollLeft = () => {
     if (scrollRef.current) {
@@ -311,7 +309,6 @@ export default function CitiesCarousel({
 
   const handleReset = () => {
     onLocalityChange("");
-    router.push("/vendors");
   };
 
   return (

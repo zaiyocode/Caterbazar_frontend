@@ -24,7 +24,7 @@ export default function CaterersSection() {
     try {
       const response = await searchVendors({
         page: 1,
-        limit: 4,
+        limit: 10,
       });
       if (response.success && response.data.vendors.length > 0) {
         setVendors(response.data.vendors);
@@ -57,7 +57,7 @@ export default function CaterersSection() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-orange-50 to-white py-8 sm:py-12 lg:py-16 px-4 sm:px-6">
+    <div className="bg-linear-to-b from-orange-50 to-white py-8 sm:py-12 lg:py-16 px-4 sm:px-6">
       <div className="container mx-auto max-w-7xl">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-10 lg:mb-12">
@@ -77,12 +77,19 @@ export default function CaterersSection() {
           </div>
         ) : filteredVendors.length > 0 ? (
           <div className="grid lg:grid-cols-2 gap-4 sm:gap-6">
-            {/* Left Column - 4 Cards */}
+            {/* Left Column - Vendor Cards */}
             <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-6 items-start">
-              {filteredVendors.slice(0, 4).map((vendor, index) => (
+            {filteredVendors.slice(0, 4).map((vendor, index) => (
                 <div
                   key={vendor?.userId?._id}
-                  onClick={() => router.push(`/vendors/${vendor?.userId?._id}`)}
+                  onClick={() => {
+                    // Create SEO-friendly URL with locality/category/brandname/id
+                    const locality = vendor.address.locality.toLowerCase().replace(/\s+/g, '-');
+                    const category = vendor.capacity.vendorCategory.toLowerCase().replace(/\s+/g, '-');
+                    const brandName = vendor.businessRegistrationId?.brandName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+                    const vendorId = vendor?.userId?._id;
+                    router.push(`/vendors/${locality}/${category}/${brandName}/${vendorId}`);
+                  }}
                   className="group overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer rounded-xl"
                 >
                   <div className="relative h-36 sm:h-40 md:h-48 overflow-hidden">
@@ -91,7 +98,7 @@ export default function CaterersSection() {
                       alt={vendor.userId.fullName}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                    <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent"></div>
                     {vendor.isCaterbazarChoice && (
                       <div className="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
                         Top Choice
@@ -132,7 +139,7 @@ export default function CaterersSection() {
                 alt="Buffet spread"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent"></div>
             </div>
           </div>
         ) : (

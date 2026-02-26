@@ -9,11 +9,13 @@ import {
   CheckCircle,
   Check,
   ChevronsUpDown,
+  Loader2,
 } from "lucide-react";
 import { TypewriterEffect } from "../ui/typewriter-effect";
 import { getHeroImages, HeroImage } from "@/api/user/public.api";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 import {
   Command,
   CommandEmpty,
@@ -29,12 +31,14 @@ import {
 } from "@/components/ui/popover";
 
 export default function HeroSection() {
+  const router = useRouter();
   const [vendorType, setVendorType] = useState("");
   const [locality, setLocality] = useState("");
   const [caterbazarChoice, setCaterbazarChoice] = useState(false);
   const [heroImages, setHeroImages] = useState<HeroImage[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [searching, setSearching] = useState(false);
   const [vendorTypeOpen, setVendorTypeOpen] = useState(false);
   const [localityOpen, setLocalityOpen] = useState(false);
 
@@ -144,16 +148,27 @@ export default function HeroSection() {
   ];
 
   const handleSearch = () => {
+    setSearching(true);
+    
     const params = new URLSearchParams();
 
     if (vendorType) params.append("vendorCategory", vendorType);
-    if (locality) params.append("locality", locality);
     if (caterbazarChoice) params.append("caterbazarChoice", "true");
 
     const queryString = params.toString();
-    const url = queryString ? `/vendors?${queryString}` : "/vendors";
+    
+    let url: string;
+    
+    if (locality) {
+      // Use SEO-friendly URL format with locality
+      const localitySlug = locality.toLowerCase().replace(/\s+/g, "-");
+      const baseUrl = `/vendors/catering-services-in-${localitySlug}`;
+      url = queryString ? `${baseUrl}?${queryString}` : baseUrl;
+    } else {
+      url = queryString ? `/vendors?${queryString}` : "/vendors";
+    }
 
-    window.location.href = url;
+    router.push(url);
   };
 
   return (
@@ -237,8 +252,12 @@ export default function HeroSection() {
                                   key={type.value}
                                   value={type.value}
                                   onSelect={(currentValue) => {
-                                    setVendorType(currentValue === vendorType ? "" : currentValue)
-                                    setVendorTypeOpen(false)
+                                    // Command normalizes to lowercase, find actual value
+                                    const actualValue = vendorTypes.find(
+                                      (t) => t.value.toLowerCase() === currentValue.toLowerCase()
+                                    )?.value || currentValue;
+                                    setVendorType(actualValue === vendorType ? "" : actualValue);
+                                    setVendorTypeOpen(false);
                                   }}
                                 >
                                   {type.label}
@@ -290,8 +309,12 @@ export default function HeroSection() {
                                   key={loc.value}
                                   value={loc.value}
                                   onSelect={(currentValue) => {
-                                    setLocality(currentValue === locality ? "" : currentValue)
-                                    setLocalityOpen(false)
+                                    // Command normalizes to lowercase, find actual value
+                                    const actualValue = localities.find(
+                                      (l) => l.value.toLowerCase() === currentValue.toLowerCase()
+                                    )?.value || currentValue;
+                                    setLocality(actualValue === locality ? "" : actualValue);
+                                    setLocalityOpen(false);
                                   }}
                                 >
                                   {loc.label}
@@ -328,10 +351,20 @@ export default function HeroSection() {
 
                   <button
                     onClick={handleSearch}
-                    className="cursor-pointer w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-orange-900 hover:bg-orange-800 text-white rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 text-xs sm:text-sm"
+                    disabled={searching}
+                    className="cursor-pointer w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-orange-900 hover:bg-orange-800 text-white rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 text-xs sm:text-sm disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Search
-                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                    {searching ? (
+                      <>
+                        <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
+                        Searching...
+                      </>
+                    ) : (
+                      <>
+                        Search
+                        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                      </>
+                    )}
                   </button>
                 </div>
               </div>

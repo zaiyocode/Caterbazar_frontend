@@ -28,38 +28,49 @@ export const TypewriterEffect = ({
   const isInView = useInView(scope);
   
   useEffect(() => {
-    if (isInView) {
+    if (isInView && scope.current) {
       const animateText = async () => {
-        // Animate text appearing
-        await animate(
-          "span",
-          {
-            display: "inline-block",
-            opacity: 1,
-            width: "fit-content",
-          },
-          {
-            duration: 0.3,
-            delay: stagger(0.1),
-            ease: "easeInOut",
-          }
-        );
-        
-        // Wait 3 seconds before resetting
-        await new Promise(resolve => setTimeout(resolve, 3000));
-        
-        // Reset animation
-        await animate(
-          "span",
-          {
-            display: "hidden",
-            opacity: 0,
-            width: 0,
-          },
-          {
-            duration: 0.1,
-          }
-        );
+        try {
+          // Check if scope is still mounted
+          if (!scope.current) return;
+          
+          // Animate text appearing
+          await animate(
+            "span",
+            {
+              display: "inline-block",
+              opacity: 1,
+              width: "fit-content",
+            },
+            {
+              duration: 0.3,
+              delay: stagger(0.1),
+              ease: "easeInOut",
+            }
+          );
+          
+          // Wait 3 seconds before resetting
+          await new Promise(resolve => setTimeout(resolve, 3000));
+          
+          // Check if scope is still mounted before reset
+          if (!scope.current) return;
+          
+          // Reset animation
+          await animate(
+            "span",
+            {
+              display: "hidden",
+              opacity: 0,
+              width: 0,
+            },
+            {
+              duration: 0.1,
+            }
+          );
+        } catch (error) {
+          // Silently handle animation errors when component unmounts
+          console.debug("Animation interrupted:", error);
+        }
       };
 
       // Start the animation loop
@@ -70,7 +81,7 @@ export const TypewriterEffect = ({
 
       return () => clearInterval(interval);
     }
-  }, [isInView, animate]);
+  }, [isInView, animate, scope]);
 
   const renderWords = () => {
     return (

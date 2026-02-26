@@ -49,6 +49,15 @@ export default function VendorDetailsPage({
       .join(" ");
   };
 
+  // Convert a string to kebab-case for SEO-friendly URLs
+  const kebabCase = (s?: string) => {
+    if (!s) return "";
+    return s
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  };
+
   // Check if user is logged in
   const isUserLoggedIn = (): boolean => {
     const accessToken = localStorage.getItem("accessToken");
@@ -149,17 +158,24 @@ export default function VendorDetailsPage({
             >
               Vendors
             </a>
-            <span className="text-gray-400">/</span>
-            <a
-              href={`/vendors?state=${vendor.address.state}`}
-              className="text-orange-500 hover:text-orange-600 whitespace-nowrap"
-            >
-              {vendor.address.state}
-            </a>
+            {/* Locality (SEO-friendly) */}
+            {vendor.address?.locality && (
+              <>
+                <span className="text-gray-400">/</span>
+                <a
+                  href={`/vendors/catering-services-in-${kebabCase(
+                    vendor.address.locality
+                  )}`}
+                  className="text-orange-500 hover:text-orange-600 whitespace-nowrap"
+                >
+                  {vendor.address.locality}
+                </a>
+              </>
+            )}
+
             <span className="text-gray-400">/</span>
             <span className="text-gray-700 whitespace-nowrap">
-              {vendor.businessRegistrationId?.brandName ||
-                vendor.userId.fullName}
+              {vendor.businessRegistrationId?.brandName || vendor.userId.fullName}
             </span>
           </div>
         </div>

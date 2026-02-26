@@ -117,7 +117,14 @@ export default function TopRatedCaterers() {
               {vendors.map((vendor, index) => (
                 <div
                   key={vendor?.userId?._id}
-                  onClick={() => router.push(`/vendors/${vendor?.userId?._id}`)}
+                  onClick={() => {
+                    // Create SEO-friendly URL with locality/category/brandname/id
+                    const locality = vendor.address.locality.toLowerCase().replace(/\s+/g, '-');
+                    const category = vendor.capacity.vendorCategory.toLowerCase().replace(/\s+/g, '-');
+                    const brandName = vendor.businessRegistrationId?.brandName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+                    const vendorId = vendor?.userId?._id;
+                    router.push(`/vendors/${locality}/${category}/${brandName}/${vendorId}`);
+                  }}
                   className="shrink-0 w-[280px] sm:w-[320px] lg:w-[calc(25%-15px)] bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group cursor-pointer"
                 >
                   {/* Image */}
@@ -170,7 +177,12 @@ export default function TopRatedCaterers() {
                       <button 
                         onClick={(e) => {
                           e.stopPropagation();
-                          router.push(`/vendors/${vendor?.userId?._id}`);
+                          // Create SEO-friendly URL with locality/category/brandname/id
+                          const locality = vendor.address.locality.toLowerCase().replace(/\s+/g, '-');
+                          const category = vendor.capacity.vendorCategory.toLowerCase().replace(/\s+/g, '-');
+                          const brandName = vendor.businessRegistrationId?.brandName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+                          const vendorId = vendor?.userId?._id;
+                          router.push(`/vendors/${locality}/${category}/${brandName}/${vendorId}`);
                         }}
                         className="cursor-pointer bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg font-semibold transition-all text-xs sm:text-sm whitespace-nowrap shadow-md hover:shadow-lg"
                       >

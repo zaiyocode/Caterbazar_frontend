@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   verification: {
-    google: "WzNq9MQgUm82_1IK_P49MLO-ch_NbFxIqPxy_WwJB9o",
+    google: "FhGssqRQ43JW6nrdm0CHNAIdlpatAteyc8Sr0feQ43o",
   },
   openGraph: {
     type: "website",
@@ -119,8 +119,24 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Google Analytics */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-NSWM8QGZGC"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-NSWM8QGZGC');
+            `,
+          }}
+        />
+        {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -128,6 +144,7 @@ export default function RootLayout({
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         <AuthCookieSync />
         {children}
