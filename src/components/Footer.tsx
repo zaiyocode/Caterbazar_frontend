@@ -24,10 +24,10 @@ export default function Footer() {
               <div className="flex items-center justify-center md:justify-start gap-3">
                 <Mail className="w-5 h-5 text-orange-500 shrink-0" />
                 <a
-                  href="mailto:itcaterbazar@gmail.com"
+                  href="mailto:support@caterbazar.com"
                   className="text-sm text-gray-400 hover:text-orange-500 transition-colors"
                 >
-                  itcaterbazar@gmail.com
+                  support@caterbazar.com
                 </a>
               </div>
               <div className="flex items-center justify-center md:justify-start gap-3">
@@ -79,7 +79,7 @@ export default function Footer() {
             <nav aria-label="Social Media Links">
               <div className="flex justify-center md:justify-end gap-6">
               <a
-                href="https://www.facebook.com/share/1FqiW3bKau/"
+                href="https://www.facebook.com/caterbazar"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white  transition-colors"
@@ -97,7 +97,7 @@ export default function Footer() {
                 <img src="/images/X-icons.png" alt="X" className="w-6 h-6 invert" />
               </a>
               <a
-                href="https://www.instagram.com/caterbazar/?hl=en"
+                href="https://www.instagram.com/caterbazar/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white  transition-colors"

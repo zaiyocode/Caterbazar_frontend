@@ -109,11 +109,11 @@ export default function MaintenancePage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               {/* Email */}
               <a
-                href="mailto:itcaterbazar@gmail.com"
+                href="mailto:support@caterbazar.com"
                 className="flex items-center gap-2 text-orange-100 hover:text-white text-sm font-medium transition-colors"
               >
                 <Mail className="w-4 h-4 shrink-0" />
-                itcaterbazar@gmail.com
+                support@caterbazar.com
               </a>
               {/* Phone */}
               <a
