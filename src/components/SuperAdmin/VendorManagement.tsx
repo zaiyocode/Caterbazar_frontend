@@ -497,6 +497,7 @@ export default function VendorManagement({ isAdminPanel = false }: VendorManagem
             setSelectedVendorId(null);
           }}
           isAdminPanel={isAdminPanel}
+          onVendorUpdated={fetchVendors}
         />
       )}
     </>

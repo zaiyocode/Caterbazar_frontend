@@ -114,6 +114,10 @@ export default function BusinessDetails() {
     chaatStreetFood: false,
     smallSizeGathering: false,
     drinksOnly: false,
+    corporateCatering: false,
+    weddingCatering: false,
+    birthdayParties: false,
+    traditionalCatering: false,
   });
 
   const [cuisineOptions, setCuisineOptions] = useState({
@@ -127,8 +131,14 @@ export default function BusinessDetails() {
     bengali: false,
     gujarati: false,
     rajasthani: false,
-    goab: false,
+    goan: false,
     maharashtrian: false,
+    punjabi: false,
+    continental: false,
+    italian: false,
+    mexican: false,
+    american: false,
+    fusion: false,
   });
 
   const [menuUploads, setMenuUploads] = useState({
@@ -303,6 +313,10 @@ export default function BusinessDetails() {
           chaat_street_food: "chaatStreetFood",
           small_gathering: "smallSizeGathering",
           drinks_only: "drinksOnly",
+          corporate_catering: "corporateCatering",
+          wedding_catering: "weddingCatering",
+          birthday_parties: "birthdayParties",
+          traditional_catering: "traditionalCatering",
         };
         const newServiceSpec: any = {
           multiCuisine: false,
@@ -310,6 +324,10 @@ export default function BusinessDetails() {
           chaatStreetFood: false,
           smallSizeGathering: false,
           drinksOnly: false,
+          corporateCatering: false,
+          weddingCatering: false,
+          birthdayParties: false,
+          traditionalCatering: false,
         };
         profile.pricing.servicesSpecialization?.forEach((service: string) => {
           const key = servicesMap[service];
@@ -329,8 +347,14 @@ export default function BusinessDetails() {
           bengali: "bengali",
           gujarati: "gujarati",
           rajasthani: "rajasthani",
-          goan: "goab",
+          goan: "goan",
           maharashtrian: "maharashtrian",
+          punjabi: "punjabi",
+          continental: "continental",
+          italian: "italian",
+          mexican: "mexican",
+          american: "american",
+          fusion: "fusion",
         };
         const newCuisines: any = {
           northIndian: false,
@@ -343,8 +367,14 @@ export default function BusinessDetails() {
           bengali: false,
           gujarati: false,
           rajasthani: false,
-          goab: false,
+          goan: false,
           maharashtrian: false,
+          punjabi: false,
+          continental: false,
+          italian: false,
+          mexican: false,
+          american: false,
+          fusion: false,
         };
         profile.pricing.cuisineOptions?.forEach((cuisine: string) => {
           const key = cuisineMap[cuisine];
@@ -734,6 +764,10 @@ export default function BusinessDetails() {
         chaatStreetFood: "chaat_street_food",
         smallSizeGathering: "small_gathering",
         drinksOnly: "drinks_only",
+        corporateCatering: "corporate_catering",
+        weddingCatering: "wedding_catering",
+        birthdayParties: "birthday_parties",
+        traditionalCatering: "traditional_catering",
       };
       const selectedServices = Object.entries(serviceSpecialization)
         .filter(([_, value]) => value)
@@ -756,8 +790,14 @@ export default function BusinessDetails() {
         bengali: "bengali",
         gujarati: "gujarati",
         rajasthani: "rajasthani",
-        goab: "goan",
+        goan: "goan",
         maharashtrian: "maharashtrian",
+        punjabi: "punjabi",
+        continental: "continental",
+        italian: "italian",
+        mexican: "mexican",
+        american: "american",
+        fusion: "fusion",
       };
       const selectedCuisines = Object.entries(cuisineOptions)
         .filter(([_, value]) => value)
@@ -1486,6 +1526,50 @@ export default function BusinessDetails() {
                   />
                   <span className="text-sm text-gray-700">Drinks Only</span>
                 </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={serviceSpecialization.corporateCatering}
+                    onChange={() =>
+                      handleCheckboxChange("service", "corporateCatering")
+                    }
+                    className="w-4 h-4 text-orange-500 rounded"
+                  />
+                  <span className="text-sm text-gray-700">Corporate Catering</span>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={serviceSpecialization.weddingCatering}
+                    onChange={() =>
+                      handleCheckboxChange("service", "weddingCatering")
+                    }
+                    className="w-4 h-4 text-orange-500 rounded"
+                  />
+                  <span className="text-sm text-gray-700">Wedding Catering</span>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={serviceSpecialization.birthdayParties}
+                    onChange={() =>
+                      handleCheckboxChange("service", "birthdayParties")
+                    }
+                    className="w-4 h-4 text-orange-500 rounded"
+                  />
+                  <span className="text-sm text-gray-700">Birthday Parties</span>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={serviceSpecialization.traditionalCatering}
+                    onChange={() =>
+                      handleCheckboxChange("service", "traditionalCatering")
+                    }
+                    className="w-4 h-4 text-orange-500 rounded"
+                  />
+                  <span className="text-sm text-gray-700">Traditional Catering</span>
+                </label>
               </div>
             </div>
           )}
@@ -1597,11 +1681,11 @@ export default function BusinessDetails() {
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    checked={cuisineOptions.goab}
-                    onChange={() => handleCheckboxChange("cuisine", "goab")}
+                    checked={cuisineOptions.goan}
+                    onChange={() => handleCheckboxChange("cuisine", "goan")}
                     className="w-4 h-4 text-orange-500 rounded"
                   />
-                  <span className="text-sm text-gray-700">Goab</span>
+                  <span className="text-sm text-gray-700">Goan</span>
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
@@ -1613,6 +1697,62 @@ export default function BusinessDetails() {
                     className="w-4 h-4 text-orange-500 rounded"
                   />
                   <span className="text-sm text-gray-700">Maharashtrian</span>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={cuisineOptions.punjabi}
+                    onChange={() => handleCheckboxChange("cuisine", "punjabi")}
+                    className="w-4 h-4 text-orange-500 rounded"
+                  />
+                  <span className="text-sm text-gray-700">Punjabi</span>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={cuisineOptions.continental}
+                    onChange={() =>
+                      handleCheckboxChange("cuisine", "continental")
+                    }
+                    className="w-4 h-4 text-orange-500 rounded"
+                  />
+                  <span className="text-sm text-gray-700">Continental</span>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={cuisineOptions.italian}
+                    onChange={() => handleCheckboxChange("cuisine", "italian")}
+                    className="w-4 h-4 text-orange-500 rounded"
+                  />
+                  <span className="text-sm text-gray-700">Italian</span>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={cuisineOptions.mexican}
+                    onChange={() => handleCheckboxChange("cuisine", "mexican")}
+                    className="w-4 h-4 text-orange-500 rounded"
+                  />
+                  <span className="text-sm text-gray-700">Mexican</span>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={cuisineOptions.american}
+                    onChange={() => handleCheckboxChange("cuisine", "american")}
+                    className="w-4 h-4 text-orange-500 rounded"
+                  />
+                  <span className="text-sm text-gray-700">American</span>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={cuisineOptions.fusion}
+                    onChange={() => handleCheckboxChange("cuisine", "fusion")}
+                    className="w-4 h-4 text-orange-500 rounded"
+                  />
+                  <span className="text-sm text-gray-700">Fusion</span>
                 </label>
               </div>
             </div>

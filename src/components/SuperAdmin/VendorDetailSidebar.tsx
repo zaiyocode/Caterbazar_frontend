@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { 
   X, Mail, Phone, MapPin, Calendar, CheckCircle, XCircle, 
-  Clock, User, Shield, Activity, AlertCircle, Loader2, Building2
+  Clock, User, Shield, Activity, AlertCircle, Loader2, Building2, Edit2, Images
 } from 'lucide-react';
 import { 
   getVendorById, 
@@ -11,21 +11,26 @@ import {
   toggleVendorActive, 
   type Vendor 
 } from '@/api/superadmin/vendor.api';
+import VendorBusinessDetails from './VendorBusinessDetails';
+import VendorGalleryManagement from './VendorGalleryManagement';
 
 interface VendorDetailSidebarProps {
   vendorId: string;
   isOpen: boolean;
   onClose: () => void;
   isAdminPanel?: boolean;
+  onVendorUpdated?: () => void;
 }
 
-export default function VendorDetailSidebar({ vendorId, isOpen, onClose, isAdminPanel = false }: VendorDetailSidebarProps) {
+export default function VendorDetailSidebar({ vendorId, isOpen, onClose, isAdminPanel = false, onVendorUpdated }: VendorDetailSidebarProps) {
   const [vendor, setVendor] = useState<Vendor | null>(null);
   const [analytics, setAnalytics] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [actionLoading, setActionLoading] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState('');
+  const [showBusinessDetails, setShowBusinessDetails] = useState(false);
+  const [showGalleryManagement, setShowGalleryManagement] = useState(false);
 
   useEffect(() => {
     if (isOpen && vendorId) {
@@ -469,10 +474,19 @@ export default function VendorDetailSidebar({ vendorId, isOpen, onClose, isAdmin
             {/* Business Information */}
             {(vendor.businessInfo || vendor.capacity || vendor.address) && (
               <div className="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-200">
-                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
-                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" />
-                  Business Information
-                </h3>
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 flex items-center gap-2">
+                    <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" />
+                    Business Information
+                  </h3>
+                  <button
+                    onClick={() => setShowBusinessDetails(true)}
+                    className="flex items-center gap-1 px-3 py-1.5 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition text-xs sm:text-sm"
+                  >
+                    <Edit2 size={16} />
+                    Edit
+                  </button>
+                </div>
                 <div className="space-y-3">
                   {vendor.capacity?.vendorCategory && (
                     <div className="flex items-center justify-between py-2 border-b border-gray-200">
@@ -542,6 +556,24 @@ export default function VendorDetailSidebar({ vendorId, isOpen, onClose, isAdmin
                 )}
               </div>
             )}
+
+            {/* Gallery Management */}
+            <div className="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-200">
+              <div className="flex items-center justify-between">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 flex items-center gap-2">
+                  <Images className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" />
+                  Gallery
+                </h3>
+                <button
+                  onClick={() => setShowGalleryManagement(true)}
+                  className="flex items-center gap-1 px-3 py-1.5 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition text-xs sm:text-sm"
+                >
+                  <Edit2 size={16} />
+                  Manage
+                </button>
+              </div>
+              <p className="text-xs text-gray-600 mt-2">View and manage vendor gallery images</p>
+            </div>
 
             {/* Pricing Information */}
             {vendor.pricing && (
@@ -812,6 +844,26 @@ export default function VendorDetailSidebar({ vendorId, isOpen, onClose, isAdmin
           </div>
         )}
       </div>
+
+      {/* Business Details Modal */}
+      <VendorBusinessDetails
+        vendorId={vendorId}
+        isOpen={showBusinessDetails}
+        onClose={() => {
+          setShowBusinessDetails(false);
+          fetchVendorDetails(); // Refresh vendor data after update
+          if (onVendorUpdated) {
+            onVendorUpdated(); // Notify parent component to refresh
+          }
+        }}
+      />
+
+      {/* Gallery Management Modal */}
+      <VendorGalleryManagement
+        vendorId={vendorId}
+        isOpen={showGalleryManagement}
+        onClose={() => setShowGalleryManagement(false)}
+      />
     </>
   );
 }
