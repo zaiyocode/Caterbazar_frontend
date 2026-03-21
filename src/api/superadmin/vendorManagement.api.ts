@@ -157,7 +157,7 @@ export const deleteVendorGalleryImage = async (
 
 /**
  * Update gallery image (SuperAdmin)
- * PATCH /vendors/gallery/:imageId?vendorId={{vendorID}}
+ * PUT /vendors/gallery/:imageId?vendorId={{vendorID}}
  */
 export const updateVendorGalleryImage = async (
   vendorId: string,
@@ -176,7 +176,7 @@ export const updateVendorGalleryImage = async (
       formData.append('caption', updateData.caption);
     }
 
-    const response = await api.patch<ImageResponse>(
+    const response = await api.put<ImageResponse>(
       `/vendors/gallery/${imageId}?vendorId=${vendorId}`,
       formData,
       {
