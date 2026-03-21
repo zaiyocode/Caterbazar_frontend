@@ -43,7 +43,7 @@ function SearchResultsContent() {
   const [selectedLocality, setSelectedLocality] = useState("");
   const [selectedState, setSelectedState] = useState("");
   const [foodPreference, setFoodPreference] = useState<
-    "veg" | "non-veg" | "both" | ""
+    "veg" | "non_veg" | "both" | ""
   >("");
   const [minGuests, setMinGuests] = useState<number | "">("");
   const [maxGuests, setMaxGuests] = useState<number | "">("");
@@ -118,7 +118,7 @@ function SearchResultsContent() {
       
       if (vendorCategory) setVendorType(vendorCategory);
       if (state) setSelectedState(state);
-      if (foodPref) setFoodPreference(foodPref as "veg" | "non-veg" | "both");
+      if (foodPref) setFoodPreference(foodPref as "veg" | "non_veg" | "both");
       if (minGuestsParam) setMinGuests(parseInt(minGuestsParam));
       if (maxGuestsParam) setMaxGuests(parseInt(maxGuestsParam));
       if (vegMinParam) setVegPriceMin(parseInt(vegMinParam));
@@ -336,9 +336,8 @@ function SearchResultsContent() {
   const sortByOptions = [
     { value: "popularity", label: "Popularity" },
     { value: "rating", label: "Highest Rated" },
-    { value: "vegPricePerPlate", label: "Price: Low to High" },
-    { value: "-vegPricePerPlate", label: "Price: High to Low" },
-    { value: "createdAt", label: "Newest First" },
+    { value: "price_low", label: "Price: Low to High" },
+    { value: "price_high", label: "Price: High to Low" },
   ];
 
   const vendorTypes = [
@@ -679,9 +678,9 @@ function SearchResultsContent() {
                     Pure Veg
                   </button>
                   <button
-                    onClick={() => setFoodPreference("non-veg")}
+                    onClick={() => setFoodPreference("non_veg")}
                     className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
-                      foodPreference === "non-veg"
+                      foodPreference === "non_veg"
                         ? "bg-orange-50 text-orange-600 font-medium"
                         : "text-gray-700 hover:bg-gray-50"
                     }`}
@@ -1113,9 +1112,9 @@ function SearchResultsContent() {
                         Pure Veg
                       </button>
                       <button
-                        onClick={() => setFoodPreference("non-veg")}
+                        onClick={() => setFoodPreference("non_veg")}
                         className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
-                          foodPreference === "non-veg"
+                          foodPreference === "non_veg"
                             ? "bg-orange-50 text-orange-600 font-medium"
                             : "text-gray-700 hover:bg-gray-50"
                         }`}

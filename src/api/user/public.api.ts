@@ -12,7 +12,7 @@ export interface VendorSearchParams {
   vegPriceMax?: number;
   nonVegPriceMin?: number;
   nonVegPriceMax?: number;
-  foodPreference?: 'veg' | 'non-veg' | 'both';
+  foodPreference?: 'veg' | 'non_veg' | 'both';
   minRating?: number;
   caterbazarChoice?: boolean;
   sortBy?: string;
