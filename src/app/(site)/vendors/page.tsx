@@ -1443,6 +1443,7 @@ function SearchResultsContent() {
                     vendor.profilePhoto ||
                     "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png";
 
+                    
                   return (
                     <div
                       key={vendor?.userId?._id}
