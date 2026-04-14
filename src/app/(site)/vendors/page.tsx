@@ -37,7 +37,7 @@ function SearchResultsContent() {
   const searchParams = useSearchParams();
 
   // Filter States
-  const [sortBy, setSortBy] = useState("popularity");
+  const [sortBy, setSortBy] = useState("");
   const [vendorType, setVendorType] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLocality, setSelectedLocality] = useState("");
@@ -69,7 +69,7 @@ function SearchResultsContent() {
   const [pagination, setPagination] = useState({
     total: 0,
     page: 1,
-    limit: 20,
+    limit: 24,
     pages: 1,
   });
 
@@ -115,6 +115,7 @@ function SearchResultsContent() {
       const caterbazarChoiceParam = urlParams.get('caterbazarChoice');
       const sortByParam = urlParams.get('sortBy');
       const searchQueryParam = urlParams.get('searchQuery');
+      const pageParam = urlParams.get('page');
       
       if (vendorCategory) setVendorType(vendorCategory);
       if (state) setSelectedState(state);
@@ -129,6 +130,12 @@ function SearchResultsContent() {
       if (caterbazarChoiceParam === 'true') setShowCaterbazarChoice(true);
       if (sortByParam) setSortBy(sortByParam);
       if (searchQueryParam) setSearchQuery(searchQueryParam);
+      if (pageParam) {
+        const parsedPage = parseInt(pageParam, 10);
+        if (!Number.isNaN(parsedPage) && parsedPage > 0) {
+          setPagination((prev) => ({ ...prev, page: parsedPage }));
+        }
+      }
       
       // Mark initialization complete after a short delay to allow state updates
       setTimeout(() => {
@@ -144,7 +151,7 @@ function SearchResultsContent() {
       try {
         const params: any = {
           page: pagination.page,
-          limit: 20,
+          limit: 24,
         };
 
         // Extract locality from pathname if present
@@ -275,8 +282,9 @@ function SearchResultsContent() {
     if (nonVegPriceMax) params.set('nonVegPriceMax', String(nonVegPriceMax));
     if (minRating) params.set('minRating', String(minRating));
     if (showCaterbazarChoice) params.set('caterbazarChoice', 'true');
-    if (sortBy && sortBy !== 'popularity') params.set('sortBy', sortBy);
+    if (sortBy) params.set('sortBy', sortBy);
     if (searchQuery) params.set('searchQuery', searchQuery);
+    if (pagination.page > 1) params.set('page', String(pagination.page));
     
     const queryString = params.toString();
     
@@ -312,8 +320,11 @@ function SearchResultsContent() {
     showCaterbazarChoice,
     sortBy,
     searchQuery,
+    pagination.page,
     router,
   ]);
+
+
 
   const handleResetFilters = () => {
     setVendorType("");
@@ -329,11 +340,39 @@ function SearchResultsContent() {
     setMinRating("");
     setShowCaterbazarChoice(false);
     setSearchQuery("");
-    setSortBy("popularity");
+    setSortBy("");
+    setPagination((prev) => ({ ...prev, page: 1 }));
     router.push("/vendors");
   };
 
+  const handlePageChange = (page: number) => {
+    if (page < 1 || page > pagination.pages || page === pagination.page) return;
+    setPagination((prev) => ({ ...prev, page }));
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const getVisiblePages = () => {
+    const totalPages = pagination.pages;
+    const currentPage = pagination.page;
+    if (totalPages <= 5) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+
+    if (currentPage <= 3) {
+      return [1, 2, 3, 4, totalPages];
+    }
+
+    if (currentPage >= totalPages - 2) {
+      return [1, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+    }
+
+    return [1, currentPage - 1, currentPage, currentPage + 1, totalPages];
+  };
+
   const sortByOptions = [
+    { value: "", label: "None" },
     { value: "popularity", label: "Popularity" },
     { value: "rating", label: "Highest Rated" },
     { value: "price_low", label: "Price: Low to High" },
@@ -503,9 +542,7 @@ function SearchResultsContent() {
                       aria-expanded={sortByOpen}
                       className="w-full justify-between shadow-none h-9 text-sm font-normal text-gray-600 bg-white hover:bg-gray-50 border-gray-300"
                     >
-                      {sortBy
-                        ? sortByOptions.find((option) => option.value === sortBy)?.label
-                        : "Select sort option"}
+                      {sortByOptions.find((option) => option.value === sortBy)?.label ?? "None"}
                       <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
                   </PopoverTrigger>
@@ -517,10 +554,10 @@ function SearchResultsContent() {
                         <CommandGroup>
                           {sortByOptions.map((option) => (
                             <CommandItem
-                              key={option.value}
-                              value={option.value}
+                              key={option.value || "none"}
+                              value={option.value || "none"}
                               onSelect={(currentValue) => {
-                                setSortBy(currentValue === sortBy ? "" : currentValue)
+                                setSortBy(currentValue === "none" ? "" : currentValue)
                                 setSortByOpen(false)
                               }}
                             >
@@ -917,9 +954,7 @@ function SearchResultsContent() {
                           aria-expanded={mobileSortByOpen}
                           className="w-full justify-between shadow-none h-9 text-sm font-normal text-gray-600 bg-white hover:bg-gray-50 border-gray-300"
                         >
-                          {sortBy
-                            ? sortByOptions.find((option) => option.value === sortBy)?.label
-                            : "Select sort option"}
+                          {sortByOptions.find((option) => option.value === sortBy)?.label ?? "None"}
                           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                         </Button>
                       </PopoverTrigger>
@@ -931,10 +966,10 @@ function SearchResultsContent() {
                             <CommandGroup>
                               {sortByOptions.map((option) => (
                                 <CommandItem
-                                  key={option.value}
-                                  value={option.value}
+                                  key={option.value || "none"}
+                                  value={option.value || "none"}
                                   onSelect={(currentValue) => {
-                                    setSortBy(currentValue === sortBy ? "" : currentValue)
+                                    setSortBy(currentValue === "none" ? "" : currentValue)
                                     setMobileSortByOpen(false)
                                   }}
                                 >
@@ -1359,10 +1394,23 @@ function SearchResultsContent() {
                 </p>
               </div>
               {pagination.pages > 1 && (
-                <button className="cursor-pointer flex items-center gap-2 text-orange-500 hover:text-orange-600 font-semibold text-sm">
-                  Next Page
-                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handlePageChange(pagination.page - 1)}
+                    disabled={pagination.page === 1}
+                    className="px-3 py-1.5 rounded-md border border-gray-300 text-sm text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    onClick={() => handlePageChange(pagination.page + 1)}
+                    disabled={pagination.page === pagination.pages}
+                    className="flex items-center gap-1 px-3 py-1.5 rounded-md border border-orange-500 text-sm text-orange-600 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-orange-50"
+                  >
+                    Next
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
               )}
             </div>
 
@@ -1487,6 +1535,49 @@ function SearchResultsContent() {
                     </div>
                   );
                 })}
+              </div>
+            )}
+
+            {!loading && pagination.pages > 1 && (
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+                <button
+                  onClick={() => handlePageChange(pagination.page - 1)}
+                  disabled={pagination.page === 1}
+                  className="px-3 py-2 rounded-md border border-gray-300 text-sm text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                >
+                  Previous
+                </button>
+
+                {getVisiblePages().map((page, index, arr) => {
+                  const showEllipsis = index > 0 && page - arr[index - 1] > 1;
+                  return (
+                    <React.Fragment key={page}>
+                      {showEllipsis && (
+                        <span className="px-2 text-gray-400" aria-hidden="true">
+                          ...
+                        </span>
+                      )}
+                      <button
+                        onClick={() => handlePageChange(page)}
+                        className={`px-3 py-2 rounded-md text-sm border transition-colors ${
+                          page === pagination.page
+                            ? "bg-orange-500 text-white border-orange-500"
+                            : "border-gray-300 text-gray-700 hover:bg-gray-50"
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    </React.Fragment>
+                  );
+                })}
+
+                <button
+                  onClick={() => handlePageChange(pagination.page + 1)}
+                  disabled={pagination.page === pagination.pages}
+                  className="px-3 py-2 rounded-md border border-gray-300 text-sm text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                >
+                  Next
+                </button>
               </div>
             )}
           </div>
